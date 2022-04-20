@@ -1,0 +1,392 @@
+@mixin lateral-note(
+    $background-color: $yellow-light-clr,
+    $padding: 0.8rem 1rem
+) {
+    margin: 0;
+    padding: 0;
+    border-radius: 3px;
+    box-shadow: 0 0 5px #0002;
+    overflow: hidden;
+    border: 1px solid darken($background-color, 5);
+    .head {
+        margin: 0;
+        padding: $padding;
+        border-bottom: 1px solid darken($background-color, 15);
+        background-color: $background-color;
+    }
+    .content {
+        margin: 0;
+        padding: $padding;
+        background-color: lighten($background-color, 7);
+    }
+}
+
+.lateral-note {
+    @include lateral-note;
+    .head {
+        h4 {
+            margin: 0;
+            color: var(--grey-text-color);
+        }
+    }
+    .content {
+        @include flex-box($direction: column, $gap: 0.7rem, $items: flex-start);
+        .icon-line {
+            font-size: 0.9em;
+            @include grid-box(
+                $share: 1.5rem 1fr,
+                $gap: 0.1rem,
+                $items: flex-start
+            );
+            i {
+                font-size: 0.6rem;
+                margin-top: 0.5em;
+            }
+            span {
+                color: var(--grey-text-color);
+            }
+            .fa-comment-alt {
+                color: $blue-clr;
+            }
+            p {
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+}
+
+.lateral-note.collectives {
+    @include lateral-note($background-color: lighten($blue-clr, 35));
+    font-size: 1.1rem;
+    .head {
+        p {
+            margin: 0;
+            color: var(--black-600);
+        }
+    }
+    .content {
+        padding: 0;
+        @include flex-box($direction: column, $gap: 0.7rem, $items: flex-start);
+        .icons-line {
+            padding: 0.8rem 1rem;
+            font-size: 0.9em;
+            border-bottom: 1px solid #0003;
+            @include flex-box(
+                $direction: column,
+                $gap: 0.3rem,
+                $items: flex-start
+            );
+            p {
+                margin: 0;
+                padding: 0;
+            }
+            .line {
+                position: relative;
+                width: 100%;
+                @include flex-box($gap: 0.5rem);
+                .img-container {
+                    --dims: 1.5rem;
+                    width: var(--dims);
+                    height: var(--dims);
+                    border-radius: 3px;
+                    overflow: hidden;
+                    img {
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                }
+                .language {
+                    .name {
+                        color: var(--grey-text-color);
+                        font-size: 0.9em;
+                    }
+                    .members {
+                        color: var(--black-600);
+                        font-size: 0.7em;
+                    }
+                }
+                button {
+                    font-size: 0.8em;
+                    position: absolute;
+                    padding: 0.5em 0.7em;
+                    background-color: transparent;
+                    border-radius: 3px;
+                    right: 0;
+                }
+            }
+            & > p {
+                font-size: 0.9em;
+                color: var(--black-600);
+                @include line-clamp(2);
+            }
+        }
+    }
+}
+
+.lateral-note.job {
+    @include lateral-note($background-color: #33974e);
+
+    font-size: 0.9rem;
+    .head {
+        @include flex-box($content: space-between, $gap: 0rem);
+        /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#33974e+0,409633+74,3aad42+99 */
+        background: #33974e; /* Old browsers */
+        background: -moz-linear-gradient(
+            left,
+            #33974e 0%,
+            #409633 74%,
+            #3aad42 99%
+        ); /* FF3.6-15 */
+        background: -webkit-linear-gradient(
+            left,
+            #33974e 0%,
+            #409633 74%,
+            #3aad42 99%
+        ); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(
+            to right,
+            #33974e 0%,
+            #409633 74%,
+            #3aad42 99%
+        ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33974e', endColorstr='#3aad42',GradientType=1 ); /* IE6-9 */
+
+        padding: 0.5rem 1rem;
+        h3 {
+            color: white;
+            font-size: 1.4em;
+            font-weight: lighter;
+            margin: 0;
+        }
+        svg {
+            width: 2.5rem;
+            fill: white;
+        }
+    }
+    .content {
+        background-color: white;
+        .full-line {
+            position: relative;
+            cursor: pointer;
+            @include grid-box($share: 2rem 1fr, $gap: 1rem, $items: flex-start);
+            .img-container {
+                img {
+                    width: 100%;
+                }
+            }
+            .right {
+                @include flex-box(
+                    $direction: column,
+                    $gap: 0.2em,
+                    $items: flex-start
+                );
+                p {
+                    margin: 0;
+                }
+                .job {
+                    @include flex-box(
+                        $direction: column,
+                        $gap: 0.2em,
+                        $items: flex-start
+                    );
+                    .job-name {
+                        color: darken($blue-clr, 10);
+                        font-weight: bold;
+                        &:hover {
+                            color: $blue-clr;
+                        }
+                    }
+                    .enterprise {
+                        @include flex-box($gap: 1rem);
+                        font-size: 0.9rem;
+                        .name {
+                            font-weight: bold;
+                            color: var(--black-600);
+                        }
+                        .location {
+                            color: var(--black-600);
+                            font-style: italic;
+                            font-size: 0.9em;
+                        }
+                    }
+                    .infos {
+                        @include flex-box($gap: 0.5rem);
+                        font-size: 0.8em;
+                        i {
+                            margin-right: 0.2em;
+                            font-size: 0.8em;
+                        }
+                        p {
+                            flex-shrink: 0;
+                            font-weight: bold;
+                        }
+                        .salary {
+                            color: #33974e;
+                        }
+                        .type {
+                            color: $yellow-clr;
+                        }
+                        .rest {
+                            color: lighten($blue-clr, 25);
+                        }
+                    }
+                }
+                .tags {
+                    p {
+                        @extend %tag;
+                        border-radius: 3px;
+                        font-size: 0.9em;
+                        &.active {
+                            border: 1px solid darken($blue-clr, 10);
+                        }
+                    }
+                }
+            }
+            .close-btn {
+                position: absolute;
+                top: 0;
+                right: 0;
+                opacity: 0;
+                pointer-events: none;
+                @include flex-box($content: center);
+                border-radius: 50%;
+                $dims: 0.9em;
+                width: $dims;
+                height: $dims;
+                background-color: var(--black-500);
+                i.fa-times {
+                    color: white;
+                    font-size: 0.7em;
+                }
+            }
+            &:hover {
+                .close-btn {
+                    opacity: 1;
+                    pointer-events: auto;
+                }
+            }
+        }
+        a {
+            width: 100%;
+        }
+        .more {
+            @include flex-box($content: space-between, $gap: 1rem);
+            width: 100%;
+            color: var(--black-600);
+            font-size: 0.9em;
+            svg {
+                path {
+                    fill: var(--black-600);
+                }
+            }
+            p {
+                flex-shrink: 0;
+                margin: 0;
+                margin-left: -2rem;
+            }
+        }
+    }
+}
+
+        .full-line {
+            position: relative;
+            cursor: pointer;
+            @include grid-box($share: 2rem 1fr, $gap: 1rem, $items: flex-start);
+            .img-container {
+                img {
+                    width: 100%;
+                }
+            }
+            .right {
+                @include flex-box(
+                    $direction: column,
+                    $gap: 0.2em,
+                    $items: flex-start
+                );
+                p {
+                    margin: 0;
+                }
+                .job {
+                    @include flex-box(
+                        $direction: column,
+                        $gap: 0.2em,
+                        $items: flex-start
+                    );
+                    .job-name {
+                        color: darken($blue-clr, 10);
+                        font-weight: bold;
+                        &:hover {
+                            color: $blue-clr;
+                        }
+                    }
+                    .enterprise {
+                        @include flex-box($gap: 1rem);
+                        font-size: 0.9rem;
+                        .name {
+                            font-weight: bold;
+                            color: var(--black-600);
+                        }
+                        .location {
+                            color: var(--black-600);
+                            font-style: italic;
+                            font-size: 0.9em;
+                        }
+                    }
+                    .infos {
+                        @include flex-box($gap: 0.5rem);
+                        font-size: 0.8em;
+                        i {
+                            margin-right: 0.2em;
+                            font-size: 0.8em;
+                        }
+                        p {
+                            flex-shrink: 0;
+                            font-weight: bold;
+                        }
+                        .salary {
+                            color: #33974e;
+                        }
+                        .type {
+                            color: $yellow-clr;
+                        }
+                        .rest {
+                            color: lighten($blue-clr, 25);
+                        }
+                    }
+                }
+                .tags {
+                    p {
+                        @extend %tag;
+                        border-radius: 3px;
+                        font-size: 0.9em;
+                        &.active {
+                            border: 1px solid darken($blue-clr, 10);
+                        }
+                    }
+                }
+            }
+            .close-btn {
+                position: absolute;
+                top: 0;
+                right: 0;
+                opacity: 0;
+                pointer-events: none;
+                @include flex-box($content: center);
+                border-radius: 50%;
+                $dims: 0.9em;
+                width: $dims;
+                height: $dims;
+                background-color: var(--black-500);
+                i.fa-times {
+                    color: white;
+                    font-size: 0.7em;
+                }
+            }
+            &:hover {
+                .close-btn {
+                    opacity: 1;
+                    pointer-events: auto;
+                }
+            }
+        }

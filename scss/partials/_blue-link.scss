@@ -1,0 +1,7 @@
+.blue-link,%blue-link{
+    cursor: pointer;
+    color: darken($blue-clr, 15);
+    &:hover{
+        color: $blue-clr;
+    }
+}

@@ -1,0 +1,85 @@
+.question {
+    @include grid-box($share: 4rem 1fr, $items: flex-start, $gap: 1.5rem);
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(darken($blue-clr, 50), 0.1);
+    & > .left {
+        p {
+            text-align: center;
+        }
+        & > div {
+            padding: 0.4em 0.5em;
+            color: var(--black-600);
+            border-radius: 5px;
+            .number {
+                font-size: 1.2em;
+            }
+            .label {
+                font-size: 0.8em;
+                &.marron {
+                    color: var(--orange-800);
+                }
+            }
+            &.answered {
+                border: 1px solid $green-clr;
+                color: $green-clr;
+            }
+        }
+    }
+    & > .right {
+        --margin: 0.3rem;
+        & > .head {
+            h3 {
+                font-size: 1.2em;
+                color: $blue-clr;
+                margin: var(--margin) 0;
+                font-weight: lighter;
+            }
+            p {
+                font-size: 0.9em;
+                margin: var(--margin) 0;
+            }
+        }
+        .foot {
+            margin-top: 0.6rem;
+            .tags {
+                float: left;
+                .tag {
+                    @extend %tag;
+                }
+            }
+            .request-infos {
+                color: var(--grey-text-color);
+                margin-right: 3rem;
+                margin-left: 1rem;
+                float: right;
+                .date {
+                    margin: 0.3rem 0;
+                    font-size: 0.9em;
+                }
+                .asker {
+                    @include flex-box($gap: 0.5rem);
+                    .img-container {
+                        --dims: 2.3rem;
+                        width: var(--dims);
+                        height: var(--dims);
+                        border-radius: 5px;
+                        overflow: hidden;
+                        img {
+                            width: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                    .right {
+                        .pseudo {
+                            color: $blue-clr;
+                            &:hover {
+                                color: lighten($blue-clr, 15);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

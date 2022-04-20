@@ -1,0 +1,352 @@
+@import "../main";
+@import "../grid-page";
+@import "job";
+
+.global-wrapper {
+    & > main {
+        $gap: 1rem;
+        & > header {
+            margin: 1rem;
+            position: static;
+            & > div {
+                border: none;
+                gap: 0.5rem;
+                .paragraph {
+                    margin: 1rem 0;
+                    width: 40%;
+                    font-size: 1.3em;
+                }
+                .form-and-btn {
+                    @include flex-box($gap: 0.5rem);
+                    width: 100%;
+                    height: 3rem;
+                    font-size: 1.2em;
+                    --color: #bbb;
+                    color: var(--color);
+                    .balance-form {
+                        @include flex-box($gap: 0);
+                        height: 100%;
+                        width: 100%;
+                        --portion: 50%;
+                        .search-form {
+                            height: 100%;
+                            transition: width 0.3s;
+                            transition-delay: 0.1s;
+                            input {
+                                height: 100%;
+                                width: 100%;
+                                border-color: #1114;
+                                &::placeholder {
+                                    color: var(--color);
+                                }
+                            }
+                            &:nth-child(1) {
+                                width: var(--portion);
+                                input {
+                                    border-radius: 3px 0 0 3px;
+                                }
+                            }
+                            &:nth-child(2) {
+                                width: calc(100% - var(--portion));
+                                input {
+                                    border-radius: 0 3px 3px 0;
+                                }
+                            }
+                        }
+                    }
+                    button {
+                        height: 100%;
+                        flex-shrink: 0;
+                        padding: 0.5rem 1rem;
+                    }
+                }
+                .middle-container {
+                    --height: 2.5rem;
+                    @include flex-box($gap: 0.3rem);
+                    flex-wrap: wrap;
+                    .buttons-block {
+                        @include flex-box($gap: 0.2rem);
+                        flex-wrap: wrap;
+                        --color: var(--black-600);
+                        color: var(--color);
+                        height: 100%;
+                        .checkbox {
+                            button {
+                                display: block !important;
+                            }
+                        }
+                        button {
+                            height: var(--height);
+                            font-size: 0.9em;
+                            flex-shrink: 0;
+                            border-radius: 3px;
+                            @include flex-box($content: center, $gap: 0.3rem);
+                            svg path {
+                                fill: var(--color);
+                            }
+                            i {
+                                font-size: inherit;
+                            }
+                        }
+                        .container {
+                            .pop-up {
+                                z-index: 3;
+                                color: black;
+                                @include flex-box(
+                                    $direction: column,
+                                    $gap: 0.7rem,
+                                    $items: flex-start
+                                );
+                                --width: 18rem;
+                                min-width: var(--width);
+                                display: none;
+                                padding: 0.8rem;
+                                &.visible {
+                                    display: flex;
+                                }
+                                .primary-block {
+                                    @include flex-box(
+                                        $direction: column,
+                                        $gap: 1rem,
+                                        $items: flex-start
+                                    );
+                                    --height: 2.5rem;
+                                    width: 100%;
+                                    label {
+                                        font-size: 1.1em;
+                                        width: 100%;
+                                        .input {
+                                            width: 100%;
+                                            input {
+                                                width: 100% !important;
+                                            }
+                                        }
+                                    }
+                                    & > div {
+                                        @include flex-box(
+                                            $direction: column,
+                                            $gap: 0.4rem,
+                                            $items: flex-start
+                                        );
+                                        width: 100%;
+                                        h3 {
+                                            font-size: 1.1em;
+                                        }
+                                        p {
+                                            font-size: 0.9em;
+                                        }
+                                        .input {
+                                            width: 100%;
+                                            input {
+                                                @extend %click-border;
+                                                width: 100%;
+                                                // width: var(--width);
+                                                height: var(--height);
+                                                border-radius: 3px;
+                                                border-color: $border-color;
+                                                padding: 0.5rem 0.7rem;
+                                            }
+                                        }
+                                    }
+                                }
+                                .button-block {
+                                    @include flex-box($gap: 0.3rem);
+                                    button {
+                                        padding: 0.4rem 0.7rem;
+                                    }
+                                }
+                                &.compensation-p-up {
+                                    .primary-block {
+                                        width: 100%;
+                                        .salary-currency {
+                                            @include flex-box($gap: 0.2rem);
+                                            width: 100%;
+                                            .input-bar {
+                                                width: 60%;
+                                                position: relative;
+                                                @include flex-box;
+                                                .input {
+                                                    width: 100%;
+                                                    input {
+                                                        width: 100%;
+                                                        border-radius: 3px;
+                                                        border-color: $border-color;
+                                                        box-shadow: none;
+                                                        outline: none;
+                                                        padding-right: 0.9rem;
+                                                    }
+                                                }
+                                                .plus {
+                                                    position: absolute;
+                                                    right: 0.5rem;
+                                                }
+                                            }
+                                            .select-bar {
+                                                width: 40%;
+                                            }
+                                        }
+                                    }
+                                }
+                                &.background {
+                                    width: 25rem;
+                                    .primary-block {
+                                        width: 100%;
+                                        .select-select {
+                                            width: 100%;
+                                            @include flex-box($gap: 0.5rem);
+                                            select {
+                                                width: 100%;
+                                            }
+                                        }
+                                        label {
+                                            cursor: pointer;
+                                        }
+                                        // .div {
+                                        //     width: 100%;
+                                        //     label {
+                                        //         width: 100%;
+                                        //         .input {
+                                        //             width: 100%;
+                                        //             input {
+                                        //                 width: 100% !important;
+                                        //             }
+                                        //         }
+                                        //     }
+                                        // }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .white-blue-btn {
+                        width: fit-content;
+                        height: var(--height);
+                        padding: 0.5rem 0.8rem;
+                        font-size: 0.9em;
+                        flex-shrink: 0;
+                        @include flex-box($content: center, $gap: 0.3rem);
+                        path {
+                            fill: $blue-clr;
+                        }
+                    }
+                }
+                .bottom {
+                    @include flex-box($content: space-between);
+                    margin-bottom: -1.5rem;
+                    width: 100%;
+                    p {
+                        color: var(--black-600);
+                        font-size: 0.9em;
+                        flex-shrink: 0;
+                    }
+                    & > div {
+                        @include flex-box($gap: 0.3rem);
+                        .buttons-block {
+                            button {
+                                border-radius: 3px;
+                            }
+                            .container {
+                                .has-pop-up {
+                                    .icons {
+                                        @include flex-box(
+                                            $direction: column,
+                                            $gap: 0rem
+                                        );
+                                        i {
+                                            margin: 0;
+                                            padding: 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        @media #{media-query-param(3)} {
+                            display: none;
+                        }
+                    }
+                    .select-bar {
+                        width: 5.5rem;
+                        height: 2.5rem;
+                        select {
+                            height: 100%;
+                            padding: 0.5rem;
+                        }
+                    }
+                }
+            }
+        }
+        .main-section-container {
+            border-top: 1px solid $border-color;
+            @include grid-box($share: 3fr 4fr, $items: flex-start);
+            width: 100%;
+            .jobs-pane {
+                position: sticky;
+                top: 3.5rem;
+                border-right: 1px solid $border-color;
+                .jobs {
+                    height: calc(100vh - 3.5rem);
+                    overflow: auto;
+                    .full-line {
+                        &.active {
+                            background-color: white;
+                            border-left: 4px solid $orange-clr;
+                        }
+                    }
+                }
+            }
+            .job-presenting-pane {
+                z-index: 1;
+                // background-color: red;
+                & > main {
+                    display: none;
+                    &.active {
+                        display: block;
+                    }
+                    padding-right: 2rem;
+                    @extend %job-page-content;
+                    & > header {
+                        padding: 1rem 0 0 0;
+                        top: 3rem;
+                        .s-navbar {
+                            .right {
+                                display: none;
+                                .options {
+                                    gap: 0.5rem !important;
+                                }
+                            }
+                        }
+                        &.reduced {
+                            & > div {
+                                .middle {
+                                    gap: 0rem;
+                                    .job {
+                                        width: 100%;
+                                    }
+                                    .buttons {
+                                        flex-shrink: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            @media #{custom-query-param(1000px)} {
+                grid-template-columns: 1fr;
+                .jobs-pane {
+                    width: 100%;
+                    .jobs {
+                        .full-line.active {
+                            border-left: none;
+                            background-color: inherit;
+                        }
+                    }
+                }
+                .job-presenting-pane {
+                    display: none;
+                }
+            }
+        }
+    }
+}

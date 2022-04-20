@@ -1,0 +1,27 @@
+@import "../main";
+@import "../grid-page";
+body {
+    background-color: white !important;
+}
+.global-wrapper {
+    & > main {
+        .main-container {
+            @include flex-box($direction: column, $items: flex-start);
+            padding: 0;
+        }
+    }
+}
+h1 {
+    font-size: 2em;
+    color: var(--black-800);
+    font-family: var(--ff-roboto);
+    @media #{custom-query-param(630px)} {
+        font-size: 1.8em;
+    }
+}
+@import "header";
+@import "section-1";
+@import "section-2";
+@import "section-3";
+@import "section-4";
+@import "section-5";

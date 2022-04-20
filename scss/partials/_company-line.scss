@@ -1,0 +1,82 @@
+.companies {
+    width: 100%;
+    @include flex-box($direction: column, $gap: 0rem, $items: flex-start);
+    border-top: 1px solid $border-color;
+    .company-line {
+        @include grid-box($share: 3rem 1fr, $items: flex-start, $gap: 1rem);
+        padding: 1rem 1rem;
+        padding-right: 3rem;
+        position: relative;
+        border-bottom: 1px solid $border-color;
+        width: 100%;
+        img {
+            border-radius: 4px;
+            width: 100%;
+        }
+        .right {
+            @include flex-box(
+                $direction: column,
+                $gap: 0.4rem,
+                $items: flex-start
+            );
+            .company-name {
+                font-weight: normal;
+                font-size: 1.1em;
+                @extend %blue-link;
+            }
+            .primary-infos {
+                @include flex-box($items: flex-start, $gap: 0.3em);
+                flex-wrap: wrap;
+                color: var(--black-500);
+                fill: var(--black-500);
+            }
+            .description {
+                color: var(--black-800);
+                @include line-clamp(2);
+            }
+            .primary-infos,
+            .description {
+                font-size: 0.9em;
+            }
+            .tags {
+                p {
+                    @extend .tag;
+                    &.dark-tag {
+                        background-color: darken($blue-clr, 25);
+                        color: white;
+                    }
+                }
+            }
+        }
+        .close-btn {
+            position: absolute;
+            top: 50%;
+            right: 1rem;
+            transform: translateY(-50%);
+            display: none;
+            i {
+                color: var(--black-500);
+                font-size: 1rem;
+                &:hover {
+                    color: var(--black-600);
+                }
+            }
+            background-color: inherit;
+        }
+        &:hover {
+            .close-btn {
+                display: block;
+            }
+        }
+        @media #{custom-query-param(960px)} {
+            .close-btn {
+                display: none;
+            }
+            &:hover {
+                .close-btn {
+                    display: none;
+                }
+            }
+        }
+    }
+}

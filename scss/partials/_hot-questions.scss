@@ -1,0 +1,26 @@
+
+.hot-questions {
+    max-width: 20rem;
+    @include flex-box($direction: column, $items: flex-start, $gap: 0.6em);
+    h3 {
+        margin: 0.5em 0;
+        font-weight: lighter;
+        font-size: 1.3em;
+    }
+    .icon-line {
+        @include grid-box($share: 1rem 1fr, $gap: 0.5em, $items: flex-start);
+        i {
+            color: rgb(204, 166, 71);
+            font-size: 0.8em;
+            margin-top: 0.3em;
+        }
+        p {
+            font-size: 0.9em;
+            color: darken($blue-clr, 15);
+            cursor: pointer;
+            &:hover {
+                color: $blue-clr;
+            }
+        }
+    }
+}

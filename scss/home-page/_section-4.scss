@@ -1,0 +1,81 @@
+// @import "../main";
+
+.section-4 {
+    --gap: 12rem;
+    margin-top: calc(0rem - var(--gap));
+    .advantages {
+        @include flex-box($content: center, $gap: 1rem);
+        flex-wrap: wrap;
+        padding: 0 3rem;
+        .advantage {
+            @extend %rebound-appearence;
+            padding: 1rem;
+            background-color: #ccc;
+            border-radius: 0.4rem;
+            --size: 10rem;
+            width: 22%;
+            min-width: 10rem;
+            max-width: 15rem;
+            height: var(--size);
+            @include flex-box($content: center, $direction: column, $gap: 1rem);
+            svg {
+                flex-shrink: 0;
+                margin: 0;
+                width: 2rem;
+                fill: $purple-clr;
+            }
+            p {
+                margin: 0;
+                text-align: center;
+            }
+        }
+        @media #{media-query-param(2)} {
+            // @include grid-box($share: repeat(2, 1fr), $gap: 1rem);
+        }
+    }
+    & > .content {
+        padding: 2rem;
+        @include flex-box($content: center, $items: flex-start, $gap: 3rem);
+        flex-wrap: wrap;
+        .testimony {
+            @include flex-box(
+                $direction: column,
+                $gap: 1rem,
+                $items: flex-start
+            );
+            min-width: 15rem;
+            max-width: 18rem;
+            width: 100%;
+            h4,
+            p {
+                margin: 0;
+                margin: 0;
+            }
+            p {
+                color: var(--black-600);
+            }
+            h4 {
+                color: var(--black-800);
+            }
+            svg {
+                fill: $blue-clr;
+            }
+            &:nth-child(4) {
+                grid-column-start: 2;
+            }
+            .author {
+                --space: 1.5rem;
+                padding-top: var(--space);
+                margin-top: var(--space);
+                border-top: 1px solid #7774;
+            }
+        }
+        // @media #{media-query-param(2)} {
+        //     @include grid-box(
+        //         $share: repeat(2, minmax(15rem, 1fr)),
+        //         $items: flex-start,
+        //         $gap: 3rem
+        //     );
+        // }
+    }
+}

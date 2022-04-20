@@ -1,0 +1,187 @@
+// @import "main";
+
+footer {
+    padding: 1rem;
+    width: 100%;
+    color: #999;
+    font-size: 0.8em;
+    background-color: var(--black-800);
+    @include flex-box($content: center, $items: flex-start);
+    & > div {
+        @include grid-box($share: 1fr 20rem, $items: flex-start);
+        width: 100%;
+        max-width: $first-screen-break;
+        @media #{media-query-param(2)} {
+            grid-template-columns: 1fr;
+        }
+        @media #{media-query-param(3)} {
+            .left {
+                padding: 0;
+            }
+            .logo {
+                display: none;
+            }
+        }
+    }
+    .left {
+        @include flex-box($items: flex-start, $gap: 0);
+        .links-grid {
+            @include flex-box($items: flex-start);
+            flex-wrap: wrap;
+            li {
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+            }
+            & > li {
+                font-weight: bold;
+                color: #bbb;
+                min-width: 8rem;
+                &.stack-networks {
+                    .exchange-networks {
+                        display: none;
+                    }
+                    .back-button-container {
+                        .exchange-network-icon {
+                            display: none;
+                        }
+                    }
+                }
+                ul {
+                    margin: 1rem 0;
+                    padding: 0;
+                    @include flex-box(
+                        $direction: column,
+                        $items: flex-start,
+                        $gap: 0.4rem
+                    );
+                    & > li {
+                        font-weight: lighter;
+                        color: #999;
+                        font-size: 1.2em;
+                        i {
+                            padding: 0.3em;
+                            margin-left: 0.2rem;
+                            border-radius: 3px;
+                            font-size: 0.5em;
+                            background-color: #999;
+                            color: black;
+                        }
+                        &:hover {
+                            color: #aaa;
+                            i {
+                                background-color: #aaa;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .right {
+        height: 100%;
+        padding: 1rem 0;
+        @include flex-box(
+            $direction: column,
+            $content: space-between,
+            $items: flex-start
+        );
+        font-size: 0.9em;
+        .contacts {
+            @include flex-box($gap: 0.5rem);
+            a {
+                &:hover {
+                    color: lighten(#999, 15);
+                }
+            }
+        }
+    }
+}
+
+.footer-linked {
+    padding: 0;
+    display: block;
+    .left {
+        padding: 0;
+        margin: 0;
+        margin-left: -2rem;
+        .logo {
+            display: none;
+        }
+        .links-grid {
+            & > li {
+                &:nth-child(4).active {
+                    --dims: 2.2rem;
+                    height: 100%;
+                    width: 100%;
+                    @include grid-box($share: 13rem 1fr, $items: flex-start);
+                    .first-link-list {
+                        width: 100%;
+                        .back-button-container {
+                            @include grid-box(
+                                $share: var(--dims) 1fr,
+                                $gap: 1rem
+                            );
+                            .exchange-network-icon {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                border-radius: 0.3em;
+                                width: var(--dims);
+                                height: var(--dims);
+                                background-color: #999;
+                                i {
+                                    font-size: 1.5em;
+                                    color: var(--black-800);
+                                }
+                                &:hover {
+                                    background-color: #bbb;
+                                }
+                            }
+                        }
+                        & > ul {
+                            margin-left: calc(var(--dims) + 1rem);
+                            li.focus {
+                                color: $orange-clr;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                    .exchange-networks {
+                        padding-left: 1rem;
+                        border-left: 1px solid #9993;
+                        width: 100%;
+                        display: block;
+                        & > div {
+                            display: none;
+                            &.focus {
+                                display: block;
+                                ul {
+                                    @include flex-box(
+                                        $items: flex-start,
+                                        $gap: 1rem
+                                    );
+                                    li {
+                                        padding: 0;
+                                        margin: 0.5rem 0;
+                                        color: #999;
+                                        font-weight: lighter;
+                                        &:hover {
+                                            color: #bbb;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            & > li:not(.stack-networks) {
+                display: none;
+            }
+        }
+    }
+    .right {
+        display: none;
+    }
+}

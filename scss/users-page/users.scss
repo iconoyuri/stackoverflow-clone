@@ -1,0 +1,52 @@
+@import "../main";
+@import "../grid-page";
+@import "../tags-page/tags.scss";
+
+.global-wrapper {
+    & > main {
+        & > .main-container {
+            & > section {
+                & > .head {
+                    @media #{custom-query-param(980px)} {
+                        .buttons-block {
+                            float: left;
+                            clear: left;
+                            flex-wrap: wrap;
+                        }
+                    }
+                }
+                & > .periods-block {
+                    width: 100%;
+                    @include flex-box($direction: row-reverse, $gap: 1rem);
+                    font-size: 0.8em;
+                    .periods {
+                        @include flex-box($gap: 0.1rem);
+                        justify-items: center;
+                        & > div {
+                            padding-bottom: 1em;
+                            border-bottom: 1px solid white;
+                            width: 100%;
+                            color: var(--black-500);
+                            p {
+                                text-align: center;
+                                margin: 0 0.5rem;
+                            }
+                            &:hover {
+                                color: var(--black-600);
+                                border-bottom-color: $orange-clr;
+                            }
+                            &.active {
+                                font-weight: bold;
+                                color: var(--black-800);
+                                border-bottom: 1px solid $orange-clr;
+                            }
+                        }
+                    }
+                }
+                & > .main {
+                    grid-gap: 2rem;
+                }
+            }
+        }
+    }
+}

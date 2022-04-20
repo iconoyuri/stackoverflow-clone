@@ -1,0 +1,100 @@
+.checkbox {
+    position: relative;
+    padding-left: 1.5rem;
+    cursor: pointer;
+    @include flex-box($gap: 0);
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+        &:checked {
+            & ~ .checkmark:after {
+                display: block;
+            }
+            & ~ .checkmark {
+                background-color: $blue-clr;
+            }
+        }
+        &:focus {
+            & ~ .checkmark {
+                @extend %click-border;
+                position: absolute;
+            }
+        }
+    }
+    .checkmark {
+        position: absolute;
+        @include flex-box($content: center);
+        --size: 15px;
+        top: 0;
+        left: 0;
+        height: var(--size);
+        width: var(--size);
+        background-color: white;
+        border: 1px solid #aaa;
+        border-radius: 3px;
+        &::after {
+            left: 3px;
+            bottom: 3px;
+            width: 4px;
+            height: 7px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            content: "";
+            position: absolute;
+            display: none;
+        }
+    }
+}
+.radio {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 1.5rem;
+    cursor: pointer;
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        &:checked {
+            & ~ .checkmark {
+                background-color: $blue-clr;
+                &:after {
+                    display: block;
+                }
+            }
+        }
+        &:focus {
+            & ~ .checkmark {
+                @extend %click-border;
+                &::before {
+                    border-radius: 50%;
+                    border-width: 4px;
+                }
+            }
+        }
+    }
+    .checkmark {
+        --size: 16px;
+        position: absolute;
+        @include flex-box($content: center);
+        left: 0;
+        height: var(--size);
+        width: var(--size);
+        background-color: white;
+        border: 1px solid #aaa;
+        border-radius: 50%;
+        &::after {
+            content: "";
+            position: absolute;
+            display: none;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: white;
+        }
+    }
+}

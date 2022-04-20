@@ -1,0 +1,18 @@
+%item {
+    border-radius: 3px;
+    padding: 0.2rem;
+    margin: 0.2rem;
+    p {
+        margin: 0;
+    }
+    .title {
+        color: #111;
+    }
+    .description {
+        font-size: 0.9rem;
+        color: #777;
+    }
+    &:hover {
+        background-color: #2223;
+    }
+}

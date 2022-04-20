@@ -1,0 +1,17 @@
+.products {
+    border-radius: 3px;
+    padding: 0;
+    .item {
+        @extend %item;
+    }
+    .about {
+        padding: 0.8rem;
+        margin: 0;
+        background-color: rgb(245, 249, 255);
+        border-top: rgb(146, 224, 255);
+        color: #777;
+        &:hover {
+            color: #111;
+        }
+    }
+}

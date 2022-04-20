@@ -1,0 +1,33 @@
+%search-bar-list {
+    display: block;
+    ul {
+        @include grid-box($share: 1fr 1fr, $gap: 1rem);
+        list-style-type: none;
+        li {
+            span {
+                &:nth-child(1) {
+                    color: #111 ;
+                }
+                &:nth-child(2) {
+                    color: #777;
+                    margin-left: 0.5rem;
+                }
+            }
+        }
+    }
+    div {
+        @include flex-box($content: space-between);
+        border-top: 1px solid rgba(0, 59, 252, 0.131);
+        padding: 0.7rem 1rem;
+        .button {
+            @extend %clear-button;
+            margin: 0;
+        }
+        span {
+            color: rgb(18, 148, 218);
+            &:hover {
+                color: rgb(34, 178, 255);
+            }
+        }
+    }
+}

@@ -1,0 +1,268 @@
+@import "../main";
+@import "../grid-page";
+
+p a {
+    @extend .blue-link;
+}
+.global-wrapper {
+    & > main {
+        & > header {
+            @include flex-box($direction: row, $items: flex-start, $gap: 1rem);
+            border-bottom: 1px solid $border-color;
+            padding-bottom: 1rem;
+            .left {
+                margin-top: 0.7rem;
+                @include flex-box(
+                    $direction: column,
+                    $gap: 0.7rem,
+                    $items: flex-start
+                );
+                h1 {
+                    font-weight: lighter;
+                    font-size: 1.9em;
+                }
+                & > div {
+                    font-size: 0.9em;
+                    @include flex-box($gap: 1rem);
+                    & > div {
+                        @include flex-box($gap: 0.3rem);
+                        .key {
+                            color: var(--black-600);
+                        }
+                    }
+                }
+            }
+            .right {
+                flex-shrink: 0;
+                padding-top: 0.7rem;
+                .blue-btn {
+                    padding: 0.7rem 0.8rem;
+                }
+            }
+            @media #{custom-query-param(620px)} {
+                @include flex-box(
+                    $direction: column-reverse,
+                    $items: flex-end,
+                    $gap: 0rem
+                );
+            }
+        }
+        .main-container {
+            & > section {
+                padding: 0;
+                padding-right: 1rem;
+                .question-callback {
+                    @include grid-box($share: 3rem 1fr, $items: flex-start);
+                    .question-options {
+                        color: var(--grey-text-color);
+                        fill: var(--grey-text-color);
+                        @include flex-box($direction: column, $gap: 0.5rem);
+                        i {
+                            font-size: 3.5em;
+                            margin: 0;
+                        }
+                        .caret-options {
+                            @include flex-box($direction: column, $gap: 0rem);
+                            & > span {
+                                font-size: 2em;
+                                margin: 0;
+                            }
+                            i {
+                                cursor: pointer;
+                            }
+                        }
+                        svg {
+                            cursor: pointer;
+                            $dims: 1.3rem;
+                            width: $dims;
+                            height: $dims;
+                        }
+                        .pop-up-container {
+                            @include flex-box(
+                                $direction: column,
+                                $content: center,
+                                $gap: 0rem
+                            );
+                            position: relative;
+                            .indication-pop-up {
+                                display: none;
+                                position: absolute;
+                                left: 3rem;
+                                width: fit-content;
+                                max-width: 7rem;
+                            }
+                        }
+                    }
+                    .question {
+                        border: none;
+                        line-height: 1.4em;
+                        @include flex-box(
+                            $direction: column,
+                            $gap: 1rem,
+                            $items: flex-start
+                        );
+                        .message-callback {
+                            padding: 1rem;
+                            margin-left: 1rem;
+                            color: var(--grey-text-color);
+                            border-left: 4px solid var(--grey-text-color);
+                        }
+                        .code {
+                            width: 100%;
+                            border-radius: 3px;
+                            overflow: hidden;
+                            font-size: 0.9em;
+                        }
+                        .tags {
+                            .tag {
+                                @extend %tag;
+                            }
+                        }
+                        .asker-infos {
+                            margin-top: 0.7rem;
+                            @include flex-box(
+                                $content: space-between,
+                                $items: flex-start
+                            );
+                            width: 100%;
+                            .options {
+                                @include flex-box(
+                                    $direction: column,
+                                    $content: space-between,
+                                    $items: flex-start
+                                );
+                                font-size: 0.9em;
+                                height: 8rem;
+                                .top {
+                                    @include flex-box($gap: 0.5rem);
+                                    color: var(--black-600);
+                                    .option {
+                                        &:hover {
+                                            color: var(--black-500);
+                                        }
+                                    }
+                                }
+                                .bottom {
+                                    color: var(--grey-text-color);
+                                }
+                            }
+                            .asker {
+                                margin-top: 0.7rem;
+                                background-color: lighten($blue-clr, 32);
+                                font-size: 0.9em;
+                                border-radius: 3px;
+                                overflow: hidden;
+                                width: 13rem;
+                                @include flex-box(
+                                    $direction: column,
+                                    $items: flex-start,
+                                    $gap: 0.5rem
+                                );
+                                .time-elapsed,
+                                .account,
+                                .contributor {
+                                    width: 100%;
+                                }
+                                .time-elapsed {
+                                    padding: 0 0.5rem;
+                                    color: var(--black-600);
+                                }
+                                .account {
+                                    @include grid-box(
+                                        $share: 2rem 1fr,
+                                        $gap: 0.5rem
+                                    );
+                                    padding: 0 0.5rem;
+                                    grid-template-rows: 1fr 1fr;
+                                    img {
+                                        width: 100%;
+                                        grid-row-start: 1;
+                                        grid-row-end: 3;
+                                    }
+                                    .pseudo {
+                                        color: darken($blue-clr, 15);
+                                        &:hover {
+                                            color: $blue-clr;
+                                        }
+                                    }
+                                    p {
+                                        margin: -0.5rem 0;
+                                    }
+                                }
+                                .contributor {
+                                    padding: 0.3rem 0.5rem;
+                                    @include flex-box($gap: 0.3rem);
+                                    background-color: lighten($blue-clr, 29);
+                                    color: var(--black-600);
+                                    path {
+                                        fill: var(--black-600);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .answer-block {
+                    // @include flex-box($direction: column,$items: flex-start, $gap: 1rem);
+                    width: 100%;
+                    font-size: 1.2em;
+                    .someone-other {
+                        a {
+                            color: darken($blue-clr, 15);
+                            &:hover {
+                                color: $blue-clr;
+                            }
+                        }
+                    }
+                    .answer {
+                        @include flex-box(
+                            $direction: column,
+                            $items: flex-start,
+                            $gap: 1rem
+                        );
+                        padding: 0;
+                        margin: 1rem 0;
+                        h3 {
+                            font-weight: normal;
+                        }
+                        .advices {
+                            position: relative;
+                            background-color: lighten($yellow-light-clr, 5);
+                            border: 1px solid darken($yellow-light-clr, 15);
+                            border-radius: 3px;
+                            padding: 0.7rem 1rem;
+                            font-size: 0.8em;
+                            color: var(--black-800);
+                            .fa-times {
+                                position: absolute;
+                                top: 0.3rem;
+                                right: 0.3rem;
+                                padding: 1rem;
+                                &:hover {
+                                    background-color: rgb(239, 239, 243);
+                                }
+                            }
+                        }
+                        .community-wiki {
+                            width: 100%;
+                            font-size: 0.9em;
+                            @include flex-box($direction: row-reverse);
+                        }
+                        .blue-btn {
+                            font-size: 0.8em;
+                            padding: 0.7em;
+                        }
+                        .paragraph-tags {
+                            font-size: 0.9em;
+                            .tag {
+                                font-size: 0.8em;
+                                @extend %tag;
+                                display: inline-block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

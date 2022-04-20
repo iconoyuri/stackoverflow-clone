@@ -1,0 +1,41 @@
+%tag,
+.tag {
+    display: inline-block;
+    margin: 0.1rem;
+    padding: 0.2em 0.5em;
+    color: darken($blue-clr, 15);
+    background-color: lighten($blue-clr, 32);
+    border-radius: 3px;
+    font-size: 0.9em;
+    cursor: pointer;
+    img,
+    svg,
+    i {
+        width: 1rem;
+        font-size: 1rem;
+    }
+    &:hover {
+        background-color: lighten($blue-clr, 27);
+    }
+}
+
+.tag-block {
+    @include flex-box($direction: column, $gap: 0.7rem, $items: flex-start);
+    font-size: 0.9em;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    padding: 0.7rem;
+    .text {
+        color: var(--black-800);
+        @include line-clamp(4);
+    }
+    .bottom {
+        @include flex-box($content: space-between, $gap: 1rem);
+        font-size: 0.9em;
+        width: 100%;
+        color: var(--grey-text-color);
+        p {
+            cursor: pointer;
+        }
+    }
+}

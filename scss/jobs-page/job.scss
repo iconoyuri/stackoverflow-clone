@@ -1,0 +1,37 @@
+@import "../main";
+@import "../grid-page";
+
+.global-wrapper {
+    & > main {
+        @extend %job-page-content;
+    }
+}
+
+.company-line {
+    @include flex-box($gap: 1rem);
+    .left {
+        @include flex-box($gap: 1rem);
+        img {
+            width: 4rem;
+            border-radius: 4px;
+        }
+        .infos {
+            .title {
+                color: $blue-clr;
+                font-weight: normal;
+                font-size: 1.4em;
+            }
+        }
+    }
+    .white-blue-btn {
+        padding: 0.6em 0.8em;
+        border: 1px solid $blue-clr;
+        font-size: 1.1em;
+    }
+    @media #{media-query-param(3)} {
+        flex-direction: column;
+        .white-blue-btn {
+            width: 100%;
+        }
+    }
+}

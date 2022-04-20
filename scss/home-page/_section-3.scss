@@ -1,0 +1,521 @@
+// @import "../main";
+
+.images-container {
+    @include flex-box;
+    width: 90%;
+    margin-top: 27rem;
+    margin-bottom: -12rem;
+    position: relative;
+    img {
+        width: 40%;
+        position: absolute;
+        bottom: 0;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 1rem #0004;
+        &:nth-child(odd) {
+            z-index: 0;
+        }
+        &:nth-child(even) {
+            z-index: 3;
+        }
+        &:nth-child(1) {
+            left: 2rem;
+        }
+        &:nth-child(2) {
+            width: 50%;
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+        &:nth-child(3) {
+            right: 2rem;
+        }
+    }
+}
+
+.section-3 {
+    background-color: lighten($dark-grey-clr, 4);
+    padding: 2rem;
+    padding-top: 0;
+    padding-bottom: 15rem;
+    border-radius: 0.4rem;
+    header {
+        @include flex-box($direction: column, $gap: 2.5rem);
+        padding: 10rem;
+        padding-bottom: 0rem;
+        h3 {
+            font-size: 1.7em;
+            font-family: var(--ff-roboto);
+            color: var(--white-text-color);
+            text-align: center;
+            margin: 0;
+            .orange-clr {
+                color: $orange-clr;
+            }
+        }
+        p {
+            margin: 0;
+        }
+    }
+    .assets {
+        @include grid-box($share: repeat(3, 1fr), $gap: 3rem);
+        align-items: flex-start;
+        padding: 0 3rem;
+        .asset {
+            @include flex-box($direction: column, $gap: 1rem);
+            width: 100%;
+            text-align: center;
+            color: var(--white-text-color);
+            i {
+                color: $green-clr;
+            }
+            h4,
+            p {
+                margin: 0;
+            }
+            h4 {
+                font-size: 1.2em;
+                font-family: var(--ff-roboto);
+            }
+            p {
+                color: var(--grey-text-color);
+            }
+            @extend %rebound-appearence;
+        }
+    }
+    hr {
+        width: 90%;
+        height: 1px;
+        border: none;
+        margin: 0;
+        padding: 0;
+        margin-top: 4rem;
+
+        background-color: #94949433;
+    }
+    .technologists-block {
+        flex-shrink: 0;
+        text-align: center;
+        overflow: hidden;
+        @include flex-box($direction: column, $gap: 5rem);
+        h3,
+        p {
+            margin: 0;
+        }
+        header {
+            @include flex-box($direction: column, $gap: 1rem);
+            padding: 0;
+            padding-top: 1rem;
+            h3,
+            p {
+                color: var(--white-text-color);
+            }
+            h3 {
+                font-size: 2em;
+                font-family: var(--ff-roboto);
+            }
+        }
+        main {
+            width: 100%;
+            display: flex;
+            overflow: auto;
+            max-width: 65rem;
+            .technologists {
+                @include flex-box;
+                color: darken(white, 20);
+                .technologist {
+                    flex-shrink: 0;
+                    width: 10rem;
+                    border-radius: 0.4rem;
+                    cursor: pointer;
+                    padding: 2rem;
+                    &:hover {
+                        background-color: #1117;
+                    }
+                    svg {
+                        fill: var(--grey-text-color);
+                    }
+                    h4 {
+                        font-size: 1.3em;
+                        text-align: center;
+                        font-family: var(--ff-roboto);
+                    }
+                    p {
+                        font-family: 0.9em;
+                        display: none;
+                    }
+                    &.active {
+                        background-color: #6664;
+                        width: 22rem;
+                        svg {
+                            fill: $blue-clr;
+                        }
+                        p {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .offer-list {
+        margin-top: 4rem;
+        .discount {
+            @include flex-box($gap: 0.5rem);
+            p {
+                color: var(--white-text-color);
+                font-size: 0.9em;
+            }
+            .tgl-button {
+                $dims: 1.1rem;
+                label {
+                    @include flex-box;
+                    width: 2.5rem;
+                    height: 1.4rem;
+                    border-radius: 5rem;
+                    background-color: #aaa;
+                    position: relative;
+                    &::before {
+                        content: "";
+                        transition: left 0.2s;
+                        position: absolute;
+                        left: $dims/5;
+                        width: $dims;
+                        height: $dims;
+                        background-color: white;
+                        border-radius: 50%;
+                    }
+                }
+                input {
+                    display: none;
+                    &:checked + label {
+                        background-color: #55dd70;
+                        &::before {
+                            left: calc(100% - #{$dims + $dims/5});
+                        }
+                    }
+                }
+            }
+        }
+        .container {
+            @include flex-box($direction: column);
+            width: 100%;
+        }
+        main {
+            padding: 0 4rem;
+            @include grid-box(
+                $share: repeat(3, 1fr),
+                $gap: 1.5rem,
+                $items: flex-start
+            );
+            flex-wrap: wrap;
+            .offer-card {
+                @include flex-box(
+                    $direction: column,
+                    $items: flex-start,
+                    $content: space-between,
+                    $gap: 2.5rem
+                );
+                width: 100%;
+                max-width: 23rem;
+                height: 100%;
+                padding: 1.5rem;
+                border-radius: 0.4rem;
+                background-color: white;
+                position: relative;
+                font-size: 1.1rem;
+                header,
+                section {
+                    @include flex-box($direction: column, $items: flex-start);
+                    padding: 0;
+                    margin: 0;
+                }
+                header {
+                    gap: 1rem;
+                    p {
+                        margin: 0;
+                        &:nth-child(2) {
+                            font-size: 0.85em;
+                        }
+                    }
+                    .offer-name {
+                        padding: 0.5rem;
+                        border-radius: 0.3rem;
+                        color: black;
+                        background-color: var(--color);
+                    }
+                }
+                section {
+                    .offer {
+                        width: 100%;
+                        margin-top: 2rem;
+                        * {
+                            margin: 0;
+                        }
+                        h4 {
+                            font-family: var(--ff-roboto);
+                            font-size: 1.5em;
+                            color: var(--black-800);
+                        }
+                        p {
+                            margin: 0.3em 0;
+                            font-size: 0.85em;
+                            color: var(--grey-text-color);
+                        }
+                        hr {
+                            margin: 2rem 0 0 0;
+                            width: 100%;
+                            background-color: var(--color);
+                        }
+                    }
+                    .offer-options {
+                        @include flex-box($direction: column, $gap: 1rem);
+                        .offer-option {
+                            font-size: 0.9em;
+                            width: 100%;
+                            color: var(--black-800);
+                            svg,
+                            i {
+                                width: 1.2em;
+                                font-size: 1.2em;
+                                fill: var(--black-800);
+                                color: var(--black-800);
+                            }
+                            @include grid-box(
+                                $share: 1rem 1fr,
+                                $gap: 1rem,
+                                $items: flex-start
+                            );
+                            p {
+                                margin: 0;
+                            }
+                        }
+                        .more {
+                            margin: 0.5rem 0;
+                            p,
+                            svg,
+                            i {
+                                $color: lighten($light-grey-clr, 20);
+                                color: $color;
+                                fill: $color;
+                            }
+                        }
+                    }
+                }
+                .buttons {
+                    width: 100%;
+                    margin-top: 1rem;
+                    button{
+                        width: 100%;
+                    }
+                    p {
+                        margin: 0.5rem;
+                        width: 100%;
+                        text-align: center;
+                        &:nth-child(2) {
+                            font-size: 0.9em;
+                            color: var(--grey-text-color);
+                        }
+                    }
+                }
+                .recommended {
+                    position: absolute;
+                    top: 0rem;
+                    transform: translateY(-80%);
+                    left: 0;
+                    font-size: 0.8em;
+                    padding: 0.5rem;
+                    @include grid-box($share: 1fr 1rem);
+                    width: 100%;
+                    background-color: #eee;
+                    border-radius: inherit;
+                    border-bottom-left-radius: 0;
+                    border-bottom-right-radius: 0;
+                    p {
+                        margin: 0;
+                    }
+                }
+                &:nth-child(1),
+                &:nth-child(3) {
+                    header {
+                        .offer-name {
+                            color: var(--white-text-color);
+                        }
+                    }
+                }
+                &:nth-child(3) {
+                    @media #{custom-query-param(1100px)} {
+                        padding: 0;
+                        display: block;
+                        .recommended {
+                            position: static;
+                            transform: translateY(0);
+                            width: 100%;
+                        }
+                        .content {
+                            @include flex-box(
+                                $direction: column,
+                                $items: flex-start,
+                                $content: space-between,
+                                $gap: 2.5rem
+                            );
+                            padding: 1.5rem;
+                        }
+                    }
+                }
+                &:nth-child(4) {
+                    grid-column-start: 2;
+                }
+            }
+            @media #{custom-query-param(1100px)} {
+                @include grid-box(
+                    $share: repeat(2, 1fr),
+                    $gap: 1.5rem,
+                    $items: flex-start
+                );
+            }
+            @media #{media-query-param(3)} {
+                @include grid-box(
+                    $share: repeat(1, 1fr),
+                    $gap: 1.5rem,
+                    $items: flex-start
+                );
+                .offer-card {
+                    &:nth-child(4) {
+                        grid-column-start: 1;
+                    }
+                }
+            }
+        }
+    }
+    .various-block {
+        @include grid-box(
+            $share: repeat(4, 1fr),
+            $items: flex-start,
+            $gap: 1.5rem
+        );
+        .various {
+            padding: 2rem;
+            margin: 0;
+            height: 100%;
+            text-align: center;
+            font-size: 1.2em;
+            color: var(--white-text-color);
+            border-radius: 0.4rem;
+            border: 1px solid #8883;
+            span {
+                font-size: 1.2em;
+                color: $blue-clr;
+                font-family: var(--ff-roboto);
+            }
+            p {
+                margin: 0;
+            }
+        }
+        @media #{media-query-param(2)} {
+            padding: 0 6rem;
+            @include grid-box(
+                $share: repeat(2, 1fr),
+                $items: flex-start,
+                $gap: 1.5rem
+            );
+        }
+        @media #{media-query-param(3)} {
+            padding: 0 6rem;
+            // .various{
+            //     width: 80%;
+            // }
+            @include grid-box(
+                $share: repeat(1, 1fr),
+                $items: flex-start,
+                $gap: 1.5rem
+            );
+        }
+    }
+    .tools {
+        @include flex-box($direction: column);
+        & > p {
+            text-align: center;
+            color: var(--grey-text-color);
+            font-size: 1.2em;
+        }
+        section {
+            margin: 0;
+            padding: 0;
+            @include grid-box($share: 2fr 3fr 2fr);
+            & > a {
+                display: block;
+                padding: 0;
+                margin: 0;
+                .enterprise {
+                    width: 100%;
+                    height: 100%;
+                    @include flex-box($direction: column, $gap: 0.5rem);
+                    img {
+                        width: 100%;
+                    }
+                    p {
+                        text-align: center;
+                        margin: 0;
+                        padding: 0;
+                        color: var(--white-text-color);
+                        font-size: 1.2em;
+                        @include flex-box($gap: 1rem);
+                        svg {
+                            width: 1rem;
+                        }
+                    }
+                }
+            }
+            & > div {
+                width: 100%;
+                height: 100%;
+                @include flex-box($direction: column, $gap: 1.5rem);
+                color: var(--white-text-color);
+                text-align: center;
+                font-size: 1.3rem;
+                h4 {
+                    font-size: 2em;
+                    font-family: var(--ff-roboto);
+                    margin: 1rem 0;
+                }
+                p {
+                    margin: 0;
+                    color: var(--grey-text-color);
+                    a {
+                        color: $blue-clr;
+                        &:hover {
+                            color: lighten($blue-clr, 15);
+                        }
+                    }
+                }
+                .icons-block {
+                    @include grid-box($share: repeat(5, 1fr), $gap: 1rem);
+                    .icon-container {
+                        .indication-pop-up {
+                            display: none;
+                        }
+                        .icon {
+                            background-color: var(--white-text-color);
+                            border-radius: 0.4rem;
+                            padding: 0.4rem;
+                            svg {
+                                $dims: 3rem;
+                                width: $dims;
+                                height: $dims;
+                            }
+                        }
+                    }
+                }
+            }
+            @media #{media-query-param(2)} {
+                @include flex-box($direction: column);
+                & > div {
+                    width: 60%;
+                }
+                & > a {
+                    display: none;
+                }
+            }
+        }
+    }
+}

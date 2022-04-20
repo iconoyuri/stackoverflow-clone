@@ -1,0 +1,17 @@
+// @import "../main";
+
+.section-7 {
+    @include flex-box($content: space-around);
+    margin: 0 auto;
+    p {
+        text-align: center;
+    }
+    .empty-button {
+        &:hover {
+            background-color: rgba($blue-clr, 0.05);
+        }
+    }
+    @media #{media-query-param(3)} {
+        flex-direction: column;
+    }
+}

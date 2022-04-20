@@ -1,0 +1,72 @@
+.related-tags {
+    @include flex-box($gap: 0.5em, $direction: column, $items: flex-start);
+    h3 {
+        margin: 0.5em 0;
+        font-weight: lighter;
+        font-size: 1.3em;
+    }
+    .more {
+        margin-top: 0.7rem;
+        font-size: 0.9em;
+        color: darken($blue-clr, 15);
+        &:hover {
+            color: $blue-clr;
+        }
+    }
+    & > div {
+        @include flex-box($gap: 0.5em);
+        font-size: 0.8em;
+        p {
+            margin: 0;
+        }
+        .tag {
+            @extend %tag;
+            &:hover {
+                background-color: lighten($blue-clr, 20);
+            }
+        }
+        i {
+            font-size: 0.6em;
+        }
+        i,
+        span {
+            color: var(--black-500);
+        }
+    }
+    &.related {
+        width: 20rem;
+        font-size: 1rem !important;
+        .related-container {
+            @include flex-box(
+                $direction: column,
+                $gap: 1em,
+                $items: flex-start
+            );
+            & > div {
+                @include grid-box(
+                    $share: 2.5rem 1fr,
+                    $gap: 0.7rem,
+                    $items: flex-start
+                );
+                cursor: pointer;
+                span {
+                    @include flex-box($content: center);
+                    width: 100%;
+                    height: 1.5em;
+                    background-color: #e8e8e8;
+                    border-radius: 2px;
+                    &.emphased {
+                        background-color: #4faa69;
+                        color: white;
+                    }
+                }
+                p {
+                    color: darken($blue-clr, 15);
+                    &:hover {
+                        color: $blue-clr;
+                    }
+                }
+            }
+        }
+    }
+}

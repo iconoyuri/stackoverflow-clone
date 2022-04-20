@@ -1,0 +1,80 @@
+@import "../main";
+@import "../grid-page";
+
+.global-wrapper {
+    & > main {
+        gap: 0;
+        $internal-padding: 0 1.5rem;
+        padding: 1rem 0;
+        & > .main-container {
+            & > section {
+                & > header {
+                    @include flex-box(
+                        $direction: column,
+                        $items: flex-start,
+                        $gap: 2rem
+                    );
+                    width: 100%;
+                    .head {
+                        width: 100%;
+                        @include flex-box($content: space-between);
+                        h1 {
+                            font-weight: lighter;
+                            font-size: 2em;
+                        }
+                        button {
+                            padding: 0.7rem;
+                        }
+                    }
+                    .middle {
+                        @include flex-box($content: space-between, $gap: 1rem);
+                        width: 100%;
+                        & > p {
+                            font-size: 1.2em;
+                        }
+                        & > div {
+                            @include flex-box($gap: 1rem);
+                            flex-shrink: 0;
+                            .clear-btn {
+                                @extend %clear-button;
+                                @include flex-box($content: center);
+                                p {
+                                    @include flex-box($gap: 0.3em);
+                                }
+                                &.active {
+                                    background-color: rgb(165, 189, 213);
+                                }
+                            }
+                        }
+                        @media #{custom-query-param(620px)} {
+                            @include flex-box(
+                                $direction: column,
+                                $items: flex-start,
+                                $gap: 1rem
+                            );
+                            & > p {
+                                font-size: 1em;
+                            }
+                            & > div {
+                                width: 100%;
+                                @include flex-box(
+                                    $content: space-between,
+                                    $gap: 1rem
+                                );
+                            }
+                        }
+                    }
+                    .padding-container {
+                        width: 100%;
+                    }
+                }
+                & > main {
+                    .questions {
+                        margin: 0;
+                        $gap: 0rem;
+                    }
+                }
+            }
+        }
+    }
+}

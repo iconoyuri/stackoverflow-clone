@@ -1,0 +1,23 @@
+.section-5 {
+    @extend .section-3;
+    & > div {
+        box-shadow: none;
+        // background: linear-gradient(
+        //     180deg,
+        //     var(--black-800) 0%,
+        //     var(--black-600) 130%
+        // );
+        background-color: var(--black-800);
+    }
+    .blue-btn {
+        border-radius: 3px;
+        padding: 0.5rem 0.7rem;
+        font-size: 0.8em;
+    }
+    p {
+        color: white;
+    }
+    svg {
+        fill: var(--black-500);
+    }
+}

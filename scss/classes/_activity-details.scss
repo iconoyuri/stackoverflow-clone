@@ -1,0 +1,29 @@
+
+.activity-details {
+    @include flex-box($gap: 0.3em);
+    color: var(--black-600);
+    font-size: 0.9em;
+    span {
+        display: block;
+    }
+    .ratio {
+        font-weight: bold;
+        @include flex-box($gap: .3em);
+    }
+    .num {
+        @include flex-box($gap: 0.2em);
+        i {
+            font-size: 0.4em;
+        }
+        &.yellow {
+            i {
+                color: $yellow-clr;
+            }
+        }
+        &.marron {
+            i {
+                color: var(--orange-800);
+            }
+        }
+    }
+}

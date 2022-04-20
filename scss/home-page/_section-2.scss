@@ -1,0 +1,50 @@
+// @import "../main";
+
+.section-2 {
+    padding: 1rem;
+    margin: 0;
+    & > p {
+        color: $light-grey-clr;
+        font-size: 1.2em;
+    }
+    gap: 2rem;
+    .org-slider {
+        @include flex-box($content: center, $direction: column);
+        position: relative;
+        height: 2.3rem;
+        .slider-block {
+            @include flex-box($gap: 4rem);
+            position: absolute; 
+            transition: opacity .5s;
+            opacity: 0;
+            height: inherit;
+            .img-container {
+                height: inherit;
+                @include flex-box;
+                img {
+                    height: inherit;
+                }
+            }
+        }
+        @media #{media-query-param(2)} {
+            height: 1.8rem;
+        }
+        .visible {
+            opacity: 1;
+        }
+    }
+    .indicators {
+        margin: 1.5rem;
+        @include flex-box($gap: 0.5rem);
+        span {
+            display: block;
+            width: 1.5rem;
+            height: 0.4rem;
+            border-radius: 1rem;
+            background-color: lighten($light-grey-clr, 35);
+        }
+        .active {
+            background-color: darken($light-grey-clr, 30);
+        }
+    }
+}

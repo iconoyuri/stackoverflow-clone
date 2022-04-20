@@ -1,0 +1,12 @@
+@mixin fake-div(
+    $background-color: #aaa3,
+    $width: 80%,
+    $height: 1rem,
+    $radius: 3px
+) {
+    background-color: $background-color;
+    height: $height;
+    width: $width;
+    border-radius: $radius;
+    display: inline-block;
+}

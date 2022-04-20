@@ -1,0 +1,901 @@
+.section-1 {
+    @include flex-box($direction: column, $gap: 1rem);
+    padding: $internal-padding;
+    width: 100%;
+    .head {
+        @include flex-box($direction: column, $gap: 0.7rem);
+        svg {
+            fill: var(--black-600);
+        }
+        p {
+            color: var(--black-600);
+            font-size: 1.05em;
+        }
+    }
+    .content {
+        @include flex-box($direction: column, $gap: 0rem);
+        background-color: #aaa1;
+        padding-bottom: 3.5rem;
+        border: 1px solid $border-color;
+        border-radius: 7px;
+        .s-navbar {
+            @include flex-box($content: center, $gap: 1rem);
+            position: sticky;
+            z-index: 1;
+            top: 3rem;
+            background-color: #fff4;
+            backdrop-filter: blur(2rem);
+            padding: 1rem 0;
+            border-bottom: 1px solid #dddb;
+            color: var(--black-600);
+            width: 100%;
+            a {
+                p {
+                    text-align: center;
+                    padding: 0.5em 0.8em;
+                    border-radius: 2rem;
+                    &.active {
+                        background-color: $orange-clr;
+                        color: white;
+                    }
+                }
+            }
+            i {
+                color: var(--black-500);
+                font-size: 3px;
+            }
+            @media #{custom-query-param(960px)} {
+                display: none;
+            }
+        }
+        section {
+            padding: 3.5rem 3rem;
+            width: 100%;
+            @include flex-box($items: flex-start);
+            .left {
+                @include flex-box(
+                    $direction: column,
+                    $items: flex-start,
+                    $gap: 2rem
+                );
+                width: 100%;
+                p {
+                    color: var(--black-600);
+                }
+                .top {
+                    @include flex-box(
+                        $direction: column,
+                        $items: flex-start,
+                        $gap: 0.8rem
+                    );
+                    border-bottom: 1px solid $border-color;
+                    padding-bottom: 2rem;
+                    svg {
+                        fill: $orange-clr;
+                    }
+                    h2 {
+                        font-family: var(--ff-roboto);
+                        font-weight: normal;
+                        font-size: 1.8em;
+                        color: var(--black-800);
+                    }
+                }
+                .bottom {
+                    .icon-paragraph {
+                        svg {
+                            fill: $orange-clr;
+                            margin-right: 0.2em;
+                        }
+                    }
+                }
+            }
+            .right {
+                width: 100%;
+                .bounce-ap{
+                    @extend %rebound-appearence;
+                }
+                .img-1 {
+                    background-color: white;
+                    width: 100% !important;
+                    border-radius: 4px;
+                    border-top: 4px solid $border-color;
+                    box-shadow: 0 0 2px #0002;
+                    @include flex-box(
+                        $direction: column,
+                        $items: flex-start,
+                        $gap: 0
+                    );
+                    .head {
+                        @include flex-box($gap: 0.8rem);
+                        color: #3335;
+                        width: 100%;
+                        padding: 0.3rem 1rem;
+                        border-bottom: 1px solid $border-color;
+                        svg {
+                            fill: #3335;
+                            height: 100%;
+                        }
+                        .search-input {
+                            width: 100%;
+                            border: 1px solid $border-color;
+                            padding: 0.2rem 0.4rem;
+                            border-radius: 3px;
+                            i {
+                                font-size: 0.8em;
+                            }
+                        }
+                    }
+                }
+                &.first-image {
+                    @include flex-box($direction: column);
+                    position: relative;
+                    min-height: 19rem;
+                    .img-1 {
+                        height: 15rem;
+                        width: 80%;
+                        max-width: 18rem;
+                        .main {
+                            @include flex-box(
+                                $direction: column,
+                                $items: flex-start,
+                                $gap: 1rem
+                            );
+                            padding: 1rem;
+                            width: 100%;
+                            .round-empty-lines {
+                                @include flex-box($gap: 0.5rem);
+                                span {
+                                    display: inline-block;
+                                    @include fake-div(
+                                        $width: 2.75rem,
+                                        $height: 1rem,
+                                        $radius: 2rem
+                                    );
+                                }
+                            }
+                            .black-pane {
+                                @include flex-box(
+                                    $gap: 0.5rem,
+                                    $items: flex-start
+                                );
+                                border-radius: 4px;
+                                background-color: var(--black-800);
+                                width: 100%;
+                                padding: 0.7rem;
+                                .left {
+                                    @include fake-div($orange-clr, 3rem, 3rem);
+                                }
+                                .right {
+                                    @include flex-box(
+                                        $direction: column,
+                                        $items: flex-start,
+                                        $gap: 0.2rem
+                                    );
+                                    div {
+                                        @include fake-div;
+                                        &.short-line {
+                                            width: 40%;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .img-2 {
+                        @include flex-box(
+                            $direction: column,
+                            $items: flex-start,
+                            $gap: 0.5rem
+                        );
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        background-color: white;
+                        padding: 1rem;
+                        width: fit-content;
+                        border-radius: 4px;
+                        box-shadow: 3px 3px 2px #0001, -2px -1px 2px #0001;
+                        .blue {
+                            color: darken($blue-clr, 13);
+                            font-size: 0.9em;
+                            &.smaller {
+                                font-size: 0.7em;
+                                margin-top: 0.1rem;
+                            }
+                        }
+                        .empty-lines {
+                            span {
+                                @include fake-div(
+                                    $background-color: rgba($blue-clr, 0.15),
+                                    $width: 2.7rem
+                                );
+                                & + span {
+                                    margin-left: 0.3rem;
+                                }
+                            }
+                        }
+                        .answer {
+                            @extend %answer;
+                        }
+                        .img-3 {
+                            @include flex-box(
+                                $direction: column,
+                                $items: flex-start,
+                                $gap: 0.5rem
+                            );
+                            background-color: white;
+                            position: absolute;
+                            top: 65%;
+                            left: 50%;
+                            padding: 0.7rem;
+                            width: 12rem;
+                            border-radius: 5px;
+                            box-shadow: 3px 3px 2px #0001, 0 0 5px #0002;
+
+                            .fake {
+                                @include fake-div($width: 70%);
+                            }
+                            .img-container {
+                                @include flex-box(
+                                    $items: flex-start,
+                                    $gap: 0.5rem
+                                );
+                                .blue {
+                                    color: darken($blue-clr, 13);
+                                    font-size: 0.8em;
+                                }
+                                .right {
+                                    @include flex-box(
+                                        $direction: column,
+                                        $items: flex-start,
+                                        $gap: 0.3rem
+                                    );
+                                    .bottom {
+                                        @include flex-box($gap: 0.2rem);
+                                        .fake {
+                                            @include fake-div($width: 0.7rem);
+                                        }
+                                        i {
+                                            font-size: 0.5rem;
+                                            &.first {
+                                                color: $orange-clr;
+                                            }
+                                            &.second {
+                                                color: var(--black-600);
+                                            }
+                                            &.third {
+                                                color: rgba(111, 79, 65, 0.576);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .orange {
+                                font-size: 0.7rem;
+                                color: $orange-clr;
+                                svg {
+                                    position: relative;
+                                    top: 0.1rem;
+                                    fill: $orange-clr;
+                                }
+                            }
+                        }
+                    }
+                }
+                &.second-image {
+                    @include flex-box($direction: column);
+                    .img-1 {
+                        .main {
+                            @include flex-box(
+                                $direction: column,
+                                $items: flex-start,
+                                $gap: 0.7rem
+                            );
+                            padding: 1rem;
+                            width: 100%;
+                            .round-empty-lines {
+                                @include flex-box($gap: 0.3rem);
+                                span {
+                                    @include fake-div(
+                                        $width: 2.5rem,
+                                        $height: 0.8rem,
+                                        $radius: 2rem
+                                    );
+                                    &.dark {
+                                        background-color: var(--black-800);
+                                    }
+                                }
+                            }
+                            .black-pane {
+                                padding-bottom: 0;
+                                width: 100%;
+                                background-color: var(--black-800);
+                                border-radius: 3px;
+                                .top {
+                                    @include flex-box(
+                                        $gap: 0.5rem,
+                                        $items: flex-start
+                                    );
+                                    padding: 0.7rem;
+                                    .left {
+                                        @include fake-div(
+                                            $orange-clr,
+                                            2.5rem,
+                                            2.5rem
+                                        );
+                                    }
+                                    .right {
+                                        @include flex-box(
+                                            $direction: column,
+                                            $items: flex-start,
+                                            $gap: 0.2rem
+                                        );
+                                        div {
+                                            @include fake-div(
+                                                $height: 0.4rem,
+                                                $width: 20%
+                                            );
+                                            &.longer-line {
+                                                width: 40%;
+                                            }
+                                            &.blue {
+                                                background-color: rgba(
+                                                    $blue-clr,
+                                                    0.7
+                                                );
+                                                margin-top: 0.5rem;
+                                            }
+                                        }
+                                    }
+                                }
+                                .bottom {
+                                    background-color: #7773;
+                                    padding: 0.4rem;
+                                    width: 100%;
+                                    & > div {
+                                        @include flex-box(
+                                            $content: flex-end,
+                                            $gap: 0.4rem
+                                        );
+                                        width: 100%;
+                                        svg path {
+                                            fill: var(--black-500) !important;
+                                        }
+                                    }
+                                }
+                            }
+                            .middle {
+                                @include flex-box(
+                                    $gap: 1rem,
+                                    $items: flex-start
+                                );
+                                width: 100%;
+                                .left {
+                                    width: 65%;
+                                    @include flex-box(
+                                        $direction: column,
+                                        $gap: 0.5rem,
+                                        $items: flex-start
+                                    );
+                                    .fake-block {
+                                        @include flex-box(
+                                            $direction: column,
+                                            $gap: 0.4rem,
+                                            $items: flex-start
+                                        );
+                                        width: 100%;
+                                        p {
+                                            font-size: 0.8rem;
+                                            color: var(--black-800);
+                                        }
+                                        .content {
+                                            @include flex-box(
+                                                $direction: column,
+                                                $gap: 0.2rem,
+                                                $items: flex-start
+                                            );
+                                            border-radius: 3px;
+                                            width: 100%;
+                                            padding: 0.7rem;
+                                            .icon-fake {
+                                                @include flex-box($gap: 0.1rem);
+                                                svg path {
+                                                    fill: #aaa;
+                                                }
+                                                .fake {
+                                                    @include fake-div(
+                                                        $width: 3rem
+                                                    );
+                                                }
+                                            }
+                                            .blue {
+                                                color: darken($blue-clr, 20);
+                                            }
+                                            .fake {
+                                                span {
+                                                    @include fake-div(
+                                                        $width: 3rem,
+                                                        $background-color:
+                                                            rgba(
+                                                                $blue-clr,
+                                                                0.15
+                                                            )
+                                                    );
+                                                    & + span {
+                                                        margin-left: 0.2rem;
+                                                    }
+                                                    &.smaller {
+                                                        width: 2rem;
+                                                    }
+                                                }
+                                            }
+                                            .answer {
+                                                @extend %answer;
+                                                width: 100%;
+                                                div {
+                                                    width: 100%;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                .right {
+                                    width: 35%;
+                                    @include flex-box(
+                                        $direction: column,
+                                        $gap: 0.7rem,
+                                        $items: flex-start
+                                    );
+                                    .lateral-pane {
+                                        border: 1px solid $border-color;
+                                        border-radius: 3px;
+                                        width: 100%;
+                                        h5 {
+                                            font-weight: normal;
+                                            font-size: 0.7em;
+                                            color: var(--black-500);
+                                            padding: 0.3rem 0.5rem;
+                                            background-color: #ccc3;
+                                            @include flex-box($gap: 0.3rem);
+                                            &.orange svg path {
+                                                fill: $orange-clr;
+                                            }
+                                        }
+                                        .content {
+                                            border: none;
+                                            background-color: inherit;
+                                            align-items: flex-start;
+                                            gap: 0.3rem;
+                                            padding: 0.5rem;
+                                            svg path {
+                                                fill: #aaa;
+                                            }
+                                            .fake {
+                                                width: 100%;
+                                                @include flex-box(
+                                                    $direction: column,
+                                                    $gap: 0.3rem
+                                                );
+                                                span {
+                                                    @include fake-div(
+                                                        $width: 100%,
+                                                        $height: 0.5rem,
+                                                        $radius: 1rem
+                                                            // $background-color: red
+                                                    );
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &.third-image {
+                    @include flex-box($direction: column);
+                    position: relative;
+                    min-height: 25rem;
+                    // padding: 0;
+                    .img-1 {
+                        width: 80%;
+                        max-width: 18rem;
+                        margin-top: 2rem;
+                        .main {
+                            @include flex-box(
+                                $direction: column,
+                                $gap: 0.5rem,
+                                $items: flex-start
+                            );
+                            width: 100%;
+                            color: var(--black-800);
+                            padding: 1rem;
+                            & > p {
+                                font-size: 0.8em;
+                                @include flex-box($gap: 0.3em);
+                            }
+                            h4 {
+                                font-size: 1.1em;
+                                font-weight: 500;
+                                max-width: 14rem;
+                            }
+                            .fake {
+                                span {
+                                    @include fake-div(
+                                        $width: 3rem,
+                                        $background-color: rgba($blue-clr, 0.13)
+                                    );
+                                    & + span {
+                                        margin-left: 0.3rem;
+                                    }
+                                    &.smaller {
+                                        width: 2rem;
+                                    }
+                                }
+                            }
+                            .icon-fake-block {
+                                @include flex-box(
+                                    $gap: 0.5rem,
+                                    $items: flex-start
+                                );
+                                width: 100%;
+                                svg {
+                                    border-radius: 50%;
+                                    border: 1px solid #ccc3;
+                                    box-sizing: initial;
+                                    padding: 0.3rem;
+                                    path {
+                                        fill: #aaa;
+                                    }
+                                }
+                                .right {
+                                    width: 100%;
+                                    span {
+                                        @include fake-div(
+                                            $width: 100%,
+                                            $background-color: #ccc3
+                                        );
+                                        & + span {
+                                            margin-top: 0.1rem;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .img-2 {
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        font-size: 0.9em;
+                        .lateral-pane {
+                            border: 1px solid $border-color;
+                            border-radius: 3px;
+                            width: 100%;
+                            max-width: 14rem;
+                            box-shadow: 0 0 5px #0002;
+                            h5 {
+                                flex-shrink: 0;
+                                font-weight: normal;
+                                font-size: 0.9em;
+                                color: var(--black-500);
+                                padding: 0.7rem 1rem;
+                                background-color: lighten(#eee, 3);
+                                border-bottom: 1px solid #eee;
+                            }
+                            .content {
+                                background-color: white;
+                                border-radius: 0;
+                                padding: 0.7rem 1rem;
+                                align-items: flex-start;
+                                gap: 0.5rem;
+                                box-shadow: none;
+                                border: none;
+                                .icon-line {
+                                    @include flex-box(
+                                        $gap: 0.5rem,
+                                        $items: flex-start
+                                    );
+                                    img {
+                                        width: 1rem;
+                                        border-radius: 3px;
+                                        margin-top: 0.2rem;
+                                    }
+                                    p {
+                                        color: var(--black-600);
+                                        font-size: 0.85em;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .img-3 {
+                        right: 0;
+                        bottom: 0;
+                        position: absolute;
+                        background-color: white;
+                        box-shadow: 0 0 5px #0003;
+                        border-radius: 4px;
+                        width: 16rem;
+                        .main {
+                            @include flex-box(
+                                $direction: column,
+                                $gap: 0.5rem,
+                                $items: flex-start
+                            );
+                            width: 100%;
+                            color: var(--black-800);
+                            padding: 1rem;
+                            & > p {
+                                font-size: 0.8em;
+                                @include flex-box($gap: 0.3em);
+                            }
+                            h4 {
+                                font-size: 1.1em;
+                                font-weight: 500;
+                                max-width: 14rem;
+                            }
+                            .fake {
+                                span {
+                                    @include fake-div(
+                                        $width: 3rem,
+                                        $background-color: rgba($blue-clr, 0.13)
+                                    );
+                                    & + span {
+                                        margin-left: 0.3rem;
+                                    }
+                                    &.smaller {
+                                        width: 2rem;
+                                    }
+                                }
+                            }
+                            .icon-fake-block {
+                                @include flex-box(
+                                    $gap: 0.5rem,
+                                    $items: flex-start
+                                );
+                                width: 100%;
+                                svg {
+                                    border-radius: 50%;
+                                    border: 1px solid #ccc3;
+                                    box-sizing: initial;
+                                    padding: 0.3rem;
+                                    path {
+                                        fill: #aaa;
+                                    }
+                                }
+                                .right {
+                                    width: 100%;
+                                    span {
+                                        @include fake-div(
+                                            $width: 100%,
+                                            $background-color: #ccc3
+                                        );
+                                        & + span {
+                                            margin-top: 0.1rem;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &.fourth-image {
+                    position: relative;
+                    min-height: 20rem;
+                    .img-1 {
+                        max-width: 18rem;
+                        box-shadow: 0 0 5px #0003;
+                        position: relative;
+                        top: 2rem;
+                        .main {
+                            padding: 1rem;
+                            width: 100%;
+                            @include flex-box(
+                                $direction: column,
+                                $gap: 1rem,
+                                $items: flex-start
+                            );
+                            .img-block {
+                                @include flex-box(
+                                    $gap: 0.7rem,
+                                    $items: flex-start
+                                );
+                                img {
+                                    width: 3rem;
+                                    height: 3rem;
+                                    border-radius: 3px;
+                                }
+                                .right {
+                                    p {
+                                        color: var(--black-600);
+                                        font-size: 0.9em;
+                                        &.border {
+                                            background-color: white;
+                                            width: 100%;
+                                            border: 1px solid #ccc;
+                                            border-radius: 3px;
+                                            padding: 0.15rem;
+                                            font-size: 0.8em;
+                                            color: #aaa;
+                                        }
+                                        & + p {
+                                            margin-top: 0.1rem;
+                                        }
+                                    }
+                                }
+                            }
+                            .fake-lines {
+                                width: 100%;
+                                .line {
+                                    width: 100%;
+                                    @include flex-box($gap: 0.5rem);
+                                    svg,
+                                    img,
+                                    .blue {
+                                        flex-shrink: 0;
+                                    }
+                                    svg.orange {
+                                        fill: $orange-clr;
+                                    }
+                                    img {
+                                        width: 1.3rem;
+                                        height: 1.3rem;
+                                        border-radius: 3px;
+                                    }
+                                    .blue {
+                                        color: darken($blue-clr, 18);
+                                        font-size: 0.9em;
+                                    }
+                                    .fake {
+                                        @include fake-div;
+                                    }
+                                    &:nth-child(1) {
+                                        fill: $yellow-clr;
+                                    }
+                                    &:nth-child(2) {
+                                        fill: #aaa;
+                                    }
+                                    &:nth-child(3) {
+                                        fill: rgb(162, 136, 131);
+                                    }
+                                    & + .line {
+                                        margin-top: 0.2rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .img-2 {
+                        @include flex-box(
+                            $direction: column,
+                            $items: flex-start,
+                            $gap: 0.5rem
+                        );
+                        position: absolute;
+                        right: 0;
+                        bottom: 0;
+                        background-color: white;
+                        padding: 1rem;
+                        width: 19rem;
+                        border-radius: 4px;
+                        box-shadow: 3px 3px 4px #0002, -2px -1px 4px #0002;
+                        .answer {
+                            @extend %answer;
+                            width: 100%;
+                        }
+                    }
+                    .img-3 {
+                        @include flex-box(
+                            $direction: column,
+                            $items: flex-start,
+                            $gap: 0.5rem
+                        );
+                        position: absolute;
+                        right: 4rem;
+                        top: 0;
+                        background-color: white;
+                        padding: 0.7rem;
+                        width: 12rem;
+                        border-radius: 5px;
+                        box-shadow: 0 0 5px #0003;
+
+                        .fake {
+                            @include fake-div($width: 70%);
+                        }
+                        .img-container {
+                            @include flex-box($items: flex-start, $gap: 0.5rem);
+                            .blue {
+                                color: darken($blue-clr, 13);
+                                font-size: 0.8em;
+                            }
+                            .right {
+                                @include flex-box(
+                                    $direction: column,
+                                    $items: flex-start,
+                                    $gap: 0.3rem
+                                );
+                                .bottom {
+                                    @include flex-box($gap: 0.2rem);
+                                    .fake {
+                                        @include fake-div($width: 0.7rem);
+                                    }
+                                    i {
+                                        font-size: 0.5rem;
+                                        &.first {
+                                            color: $orange-clr;
+                                        }
+                                        &.second {
+                                            color: var(--black-600);
+                                        }
+                                        &.third {
+                                            color: rgba(111, 79, 65, 0.576);
+                                        }
+                                    }
+                                    svg {
+                                        fill: $yellow-clr;
+                                    }
+                                    span {
+                                        position: relative;
+                                        .pop-up {
+                                            @include arrow-container;
+                                            filter: drop-shadow(0 0 3px #0003);
+                                            font-size: .9em;
+                                            color: var(--black-800);
+                                            top: 130%;
+                                            left: -1rem;
+                                            width: 10rem;
+                                            padding: .7rem;
+                                            .arrow{
+                                                left: 1.5rem;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .orange {
+                            font-size: 0.7rem;
+                            color: $orange-clr;
+                            svg {
+                                position: relative;
+                                top: 0.1rem;
+                                fill: $orange-clr;
+                            }
+                        }
+                    }
+                }
+            }
+            &:first-of-type {
+                margin-top: 3.5rem;
+            }
+            @media #{custom-query-param(960px)} {
+                flex-direction: column;
+                .left {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+%answer {
+    border-left: 2px solid $border-color;
+    padding-left: 1rem;
+    @include flex-box($direction: column, $items: flex-start, $gap: 0.5rem);
+    p {
+        font-size: 0.7em;
+        margin-bottom: 0.2rem;
+        .orange {
+            color: $orange-clr;
+            svg {
+                position: relative;
+                top: 0.1rem;
+                fill: $orange-clr;
+            }
+        }
+    }
+    & > div {
+        @include fake-div($width: 100%);
+    }
+}

@@ -1,0 +1,105 @@
+.buttons-block {
+    border-radius: 5px;
+    color: var(--black-600);
+    @include flex-box($gap: 0);
+    height: 2.2rem;
+    .container {
+        height: inherit;
+        position: relative;
+        @include flex-box($content: center);
+        .pop-up {
+            @include arrow-container($direction: top);
+            @include flex-box($direction: column, $gap: 0);
+            display: none;
+            position: absolute;
+            top: 125%;
+            width: 12rem;
+            border-radius: 5px;
+            font-size: 0.9em;
+            p {
+                margin: 0;
+            }
+            .top {
+                width: 100%;
+                padding: 0.5rem 0.8rem 0rem 0.8rem;
+                p {
+                    margin: 0.4rem 0;
+                    &:hover {
+                        color: black;
+                    }
+                }
+            }
+            .bottom {
+                background-color: #eee3;
+                color: var(--grey-text-color);
+                width: 100%;
+                margin-top: 0.4rem;
+                border-top: 1px solid #ccc;
+                p {
+                    padding: 0.8rem;
+                }
+            }
+        }
+    }
+    & > button,
+    & > .container > button {
+        height: inherit;
+        @include stk-button(
+            $color: var(--black-500),
+            $radius: 0,
+            $background-color: #f5f5f5
+        );
+        border: 1px solid var(--black-300);
+        padding: 2px 0.7rem;
+        .number {
+            color: white;
+            background-color: darken($blue-clr, 13);
+            padding: 0 3px;
+            font-size: 0.8em;
+            margin-left: 3px;
+            border-radius: 4px;
+        }
+        &.focus {
+            background-color: #c5c5ca;
+            color: black;
+        }
+        &.resp-disp {
+            @media #{custom-query-param(1094px)} {
+                display: none;
+            }
+            @media #{custom-query-param(960px)} {
+                display: block;
+            }
+            @media #{custom-query-param(760px)} {
+                display: none;
+            }
+            @media #{custom-query-param(620px)} {
+                display: block;
+            }
+            @media #{custom-query-param(590px)} {
+                display: none;
+            }
+        }
+        &:nth-child(1) {
+            border-radius: 3px 0 0 3px;
+        }
+        &:last-of-type {
+            border-radius: 0 3px 3px 0;
+        }
+        &:focus {
+            &::before {
+                border-color: #7773;
+            }
+        }
+        &.has-pop-up {
+            @include flex-box($content: center, $gap: 0.4em);
+            border-radius: 0 3px 3px 0;
+            i {
+                font-size: 0.7em;
+            }
+            &:focus + .pop-up {
+                display: flex;
+            }
+        }
+    }
+}

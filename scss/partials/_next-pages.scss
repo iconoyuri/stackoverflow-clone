@@ -1,0 +1,27 @@
+.next-pages{
+    @include flex-box($gap: .5rem);
+    font-size: .9em;
+    span{
+        border: 1px solid $border-color;
+        border-radius: 3px;
+        padding: .3em .5em;
+        &.active{
+            color: white;
+            background-color: $orange-clr;
+            border: none;
+        }
+        &.dots{
+            border: none;
+            &:hover{
+                background-color: white;
+            }
+        }
+        &:hover{
+            background-color: #0004;
+        }
+        i{
+            font-size: .7em;
+            color: inherit;
+        }
+    }
+}

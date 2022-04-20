@@ -1,0 +1,22 @@
+.select-bar {
+    width: 100%;
+    position: relative;
+    @include flex-box;
+    select {
+        @extend %click-border;
+        height: var(--height);
+        width: 100%;
+        padding: 0.3rem;
+        border-radius: 3px;
+        border-color: $border-color;
+        appearance: none;
+        &::-ms-expand {
+            display: none;
+        }
+    }
+    .icons {
+        position: absolute;
+        @include flex-box($direction: column, $gap: 0rem);
+        right: 0.7rem;
+    }
+}

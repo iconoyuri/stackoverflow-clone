@@ -1,0 +1,47 @@
+.section-4 {
+    @include flex-box($direction: column, $gap: 3rem);
+    margin: $internal-padding !important;
+    padding: 4rem;
+    width: calc(100% - 4rem) !important;
+    background-color: rgba($blue-clr, 0.05);
+    border-radius: 4px;
+    border: 1px solid rgba(darken($blue-clr, 25), 0.1);
+    .top {
+        @include flex-box($direction: column, $gap: 0.7rem);
+        width: 100%;
+        padding-bottom: 3rem;
+        border-bottom: 1px solid #0001;
+        p {
+            color: var(--black-600);
+            font-size: 1.1em;
+        }
+    }
+    .content {
+        @include flex-box($gap: 0.7rem, $items: flex-start);
+        color: var(--black-600);
+        svg {
+            width: 2rem;
+            margin-top: 0.2rem;
+            fill: var(--black-500);
+            flex-shrink: 0;
+        }
+        & > div {
+            @include flex-box(
+                $direction: column,
+                $gap: 0.7rem,
+                $items: flex-start
+            );
+            font-size: 1.2em;
+            h2 {
+                color: var(--black-800);
+                font-size: 1em;
+            }
+            p {
+                font-size: 0.9em;
+                i {
+                    font-size: 0.8em;
+                }
+            }
+        }
+    }
+}

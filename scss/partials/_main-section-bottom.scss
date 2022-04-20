@@ -1,0 +1,11 @@
+.main-section-bottom {
+    margin-top: 1rem;
+    @include flex-box($content: space-between);
+    width: 100%;
+    .left {
+        .blue-link {
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+    }
+}

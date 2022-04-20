@@ -1,0 +1,115 @@
+.user-block {
+    position: relative;
+    z-index: 0;
+    .primary-container {
+        z-index: 0 !important;
+        @include flex-box($items: flex-start, $gap: 0.5rem);
+        .img-container {
+            flex-shrink: 0;
+            --dims: 3rem;
+            height: var(--dims);
+            width: var(--dims);
+            transition: height 0.3s, width 0.3s, margin 0.1s;
+            img {
+                border-radius: 4px;
+                width: 100%;
+                transition: width 1s;
+                cursor: pointer;
+            }
+        }
+        .main-content {
+            @include flex-box(
+                $direction: column,
+                $items: flex-start,
+                $gap: 0rem
+            );
+            .name {
+                font-weight: normal;
+                font-size: 1.1em;
+                @extend .blue-link;
+            }
+            .activity-details {
+                color: $light-grey-clr;
+            }
+            .location {
+                color: var(--black-500);
+                font-size: 0.9em;
+            }
+            .web-site,
+            .technologies {
+                font-size: 0.9em;
+                @extend .blue-link;
+            }
+            .ratio {
+                font-weight: bold;
+                font-size: 0.9em;
+                color: var(--black-500);
+            }
+            .technologies {
+                font-size: 0.8em;
+            }
+        }
+    }
+    .secondary-container {
+        z-index: 2 !important;
+        $dims: 4rem;
+        @include flex-box($direction: column, $items: flex-start, $gap: 0.5rem);
+        background-color: #444;
+        border: 1px solid black;
+        padding: 0;
+        border-radius: 3px;
+        width: 0;
+        height: 0;
+        visibility: hidden;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        .top {
+            @include grid-box(
+                $share: $dims 1fr,
+                $gap: 0.5rem,
+                $items: flex-start
+            );
+            flex-shrink: 0;
+            font-size: 0.9em;
+            .container-div {
+                color: white;
+                h3 {
+                    font-weight: lighter;
+                    font-size: 1.2em;
+                }
+                .location {
+                    font-size: 0.9em;
+                    color: var(--grey-text-color);
+                }
+                .web-site {
+                    @extend .blue-link;
+                }
+            }
+        }
+        .bottom-paragraph {
+            font-size: 0.9em;
+            flex-shrink: 0;
+            width: fit-content;
+            line-height: 1em;
+            color: white;
+            a {
+                @extend .blue-link;
+            }
+        }
+    }
+    &.active {
+        .img-container {
+            --dims: 4rem;
+            margin: 0.5rem 0 0 0.5rem;
+            z-index: 3;
+        }
+        .secondary-container {
+            width: 20rem;
+            transition: width 0.5s, height 0.5s;
+            padding: 0.5rem;
+            height: 10rem;
+            visibility: visible;
+        }
+    }
+}

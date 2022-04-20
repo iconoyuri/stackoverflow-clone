@@ -1,0 +1,73 @@
+// @import "../main";
+
+.section-5 {
+    @include flex-box($direction: column, $gap: 3rem);
+    
+    header {
+        @include flex-box($direction: column, $gap: 2rem);
+        width: 70%;
+        div {
+            border-bottom: 1px solid #7773;
+            padding-bottom: 2rem;
+        }
+        h3 {
+            margin: 0;
+            padding: 0 5rem;
+            font-size: 1.8em;
+            font-family: var(--ff-roboto);
+            font-weight: lighter;
+            text-align: center;
+        }
+    }
+    .products {
+        @include grid-box(
+            $share: repeat(2, minmax(20rem, 1fr)),
+            $items: flex-start
+        );
+        margin: 0 5rem;
+        a {
+            display: block;
+            height: 100%;
+            .product {
+                height: 100%;
+                padding: 1.5rem;
+                box-shadow: 0 0 5px #0003, 0 0 15rem #0001;
+                border-radius: 0.4rem;
+                @include flex-box($direction: column, $gap: 2rem);
+                p {
+                    margin: 0;
+                    color: var(--black-600);
+                    text-align: center;
+                    font-size: 1.1em;
+                }
+            }
+        }
+        @media #{media-query-param(2)} {
+            @include grid-box(
+                $share: repeat(1, minmax(20rem, 1fr)),
+                $items: flex-start
+            );
+        }
+    }
+    & > div {
+        @include flex-box($direction: column, $gap: 0.2rem);
+        p {
+            margin: 0;
+        }
+        p:nth-child(2) {
+            font-size: 0.9em;
+            color: var(--grey-text-color);
+            padding: 0.5rem 2rem;
+            a {
+                color: $blue-clr;
+            }
+            &:hover {
+                background-color: #5552;
+                border-radius: 0.4rem;
+            }
+        }
+        .orange-btn {
+            padding: 0.7rem 2rem !important;
+        }
+    }
+}

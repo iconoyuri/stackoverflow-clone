@@ -1,0 +1,60 @@
+.orange-btn {
+    @include large-button($color: white, $background-color: $orange-clr);
+}
+.blue-btn {
+    @include large-button($color: white, $background-color: $blue-clr);
+}
+.grey-light-btn {
+    @include large-button(
+        $color: var(--black-800),
+        $background-color: $lighter-grey-clr
+    );
+}
+.grey-dark-btn {
+    @include large-button(
+        $color: var(--white-text-color),
+        $background-color: $dark-grey-clr
+    );
+}
+.purple-btn {
+    @include large-button(
+        $color: var(--white-text-color),
+        $background-color: $purple-clr
+    );
+}
+.yellow-btn {
+    @include large-button($color: $black-clr, $background-color: $yellow-clr);
+}
+.white-blue-btn {
+    @include large-button(
+        $color: $blue-clr,
+        $background-color: $background-main-color
+    );
+    &:hover {
+        background-color: lighten($blue-clr, 35);
+    }
+}
+.empty-button {
+    margin: 0;
+    padding: 0.8rem 2rem;
+    border-radius: 0.4rem;
+    border: 1px solid var(--color);
+    color: var(--color);
+    &:hover {
+        background-color: #0001;
+    }
+}
+.button-block {
+    @include flex-box($direction: column, $gap: 0.7rem);
+    p {
+        margin: 0;
+        text-align: center;
+    }
+    .or {
+        color: $dark-grey-clr;
+        font-size: 0.8em;
+        a {
+            text-decoration: underline;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+@import "../main";
+@import "../grid-page";
+@import "../jobs-page/job";
+@import "../jobs-page/jobs";
+
+body {
+    background-color: white;
+}
+.global-wrapper {
+    header {
+        background-color: inherit !important;
+        .buttons-block > button,
+        .container > button {
+            background-color: inherit !important;
+            &:hover {
+                background-color: #1111 !important;
+            }
+        }
+    }
+    .main-container {
+        .small-p {
+            font-size: 0.8em;
+            color: var(--black-500);
+        }
+    }
+    .lateral-pane {
+        @media #{custom-query-param(960px)} {
+            display: none !important;
+        }
+    }
+}

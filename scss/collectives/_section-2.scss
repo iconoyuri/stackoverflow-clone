@@ -1,0 +1,54 @@
+.section-2 {
+    @include flex-box($direction: column, $gap: 5rem);
+    padding: $internal-padding;
+    h1 {
+        text-align: center;
+        font-weight: bold;
+        font-size: 2.1em;
+        width: 70%;
+    }
+    .testimonies {
+        padding: 0 3rem;
+        @include flex-box($gap: 3rem, $items: flex-start);
+        .testimony {
+            font-size: 1.2em;
+            width: 100%;
+            color: var(--black-600);
+            @include flex-box(
+                $direction: column,
+                $gap: 1rem,
+                $items: flex-start
+            );
+            svg {
+                fill: $blue-clr;
+            }
+            & > p {
+                padding-bottom: 1rem;
+            }
+            .author {
+                @include flex-box(
+                    $direction: column,
+                    $gap: 0.3rem,
+                    $items: flex-start
+                );
+                font-size: 0.8em;
+                h4 {
+                    padding-top: 1rem;
+                    border-top: 1px solid $border-color;
+                }
+            }
+        }
+    }
+    @media #{custom-query-param(960px)} {
+        h1 {
+            width: 90%;
+        }
+        .testimonies {
+            @include flex-box(
+                $direction: column,
+                $gap: 3rem,
+                $items: flex-start
+            );
+        }
+    }
+}

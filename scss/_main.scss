@@ -1,0 +1,69 @@
+@import "stkOflw-Template";
+@import url("https://fonts.googleapis.com/css2?family=Blinker:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap");
+
+@import "navbar";
+@import "footer";
+* {
+    box-sizing: border-box;
+    font-family: var(--ff-sans);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: $background-main-color;
+    font-family: var(--ff-sans);
+    @include flex-box($direction: column, $gap: 0);
+    scroll-behavior: smooth;
+}
+
+.header,
+body > section {
+    --padding: 4rem;
+    z-index: 2;
+    margin: 3rem;
+    padding: 3rem var(--padding);
+    position: relative;
+    @include flex-box($direction: column, $gap: 3rem);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+    margin: 0;
+}
+
+%rebound-appearence {
+    opacity: 0;
+    transform: scale(0.7);
+    transition: transform 0.3s, opacity 0.3s;
+    &.visible {
+        animation-name: rebound-appearance;
+        animation-duration: 0.5s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+}
+@keyframes rebound-appearance {
+    0% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

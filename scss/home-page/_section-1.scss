@@ -1,0 +1,58 @@
+// @import "../main";
+
+.section-1 {
+    @include grid-box($share: 1fr 1fr, $gap: 2rem);
+    margin-top: -20rem;
+    padding: 3rem;
+    article {
+        width: 100%;
+        height: 100%;
+        border-radius: 0.5rem;
+        padding: 3rem 2rem;
+        box-shadow: 0 0 12rem #2223, 0 0 1rem #5551;
+        @include flex-box($direction: column, $gap: 1rem);
+        svg {
+            width: 100%;
+        }
+        img {
+            width: 110%;
+        }
+        .texts {
+            text-align: center;
+            padding: 2rem;
+            @include flex-box($direction: column, $gap: 1rem);
+            h4 {
+                font-size: 1.6em;
+                font-family: var(--ff-roboto);
+                margin: 0;
+            }
+            p {
+                font-size: 1.1em;
+                margin: 0;
+            }
+        }
+        &:nth-child(1) {
+            background: linear-gradient(
+                0deg,
+                lighten($orange-clr, 35) 30%,
+                #fff
+            );
+            .button-block {
+                .or a:hover {
+                    color: $orange-clr;
+                }
+            }
+        }
+        &:nth-child(2) {
+            background: linear-gradient(0deg, lighten($blue-clr, 35) 30%, #fff);
+            .button-block {
+                .or a:hover {
+                    color: $blue-clr;
+                }
+            }
+        }
+    }
+    @media #{media-query-param(2)} {
+        @include grid-box($share: 1fr, $gap: 2rem);
+    }
+}

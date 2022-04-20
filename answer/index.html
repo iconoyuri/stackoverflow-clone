@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            django rest framework - Is there any way in elasticsearch to
+            redirect specific search results to Context Suggester? - Stack
+            Overflow
+        </title>
+        <link rel="stylesheet" href="../scss/answer-page/css/answer.css" />
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+            integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/stackoverflow-light.min.css">
+        <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+
+    </head>
+    <body>
+        <nav>
+            <div class="nav">
+                <div class="left">
+                    <div class="menu-button">
+                        <input type="checkbox" id="menu_checkbox" />
+                        <label class="btn-menu" for="menu_checkbox">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </label>
+                        <div class="hidden-block">
+                            <div class="lateral-menu">
+                                <p>Home</p>
+                                <ul class="iconic-links-list">
+                                    <li>
+                                        <p><span>PUBLIC</span><i></i></p>
+                                        <ul>
+                                            <li class="menu-active-page">
+                                                <i
+                                                    class="fas fa-globe-africa"
+                                                ></i
+                                                ><span>Questions</span>
+                                            </li>
+                                            <li><i></i><span>Tags</span></li>
+                                            <li><i></i><span>Users</span></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <span>COLLECTIVES</span
+                                            ><i class="fas fa-info-circle"></i>
+                                        </p>
+                                        <ul>
+                                            <li>
+                                                <i class="fas fa-sun"></i
+                                                ><span>Expore Collectives</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <span>FIND A JOB</span><span></span>
+                                        </p>
+                                        <ul>
+                                            <li><i></i><span>Jobs</span></li>
+                                            <li>
+                                                <i></i><span>Companies</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p><span>TEAMS</span><span></span></p>
+                                        <ul>
+                                            <li class="teams">
+                                                <div class="teams-presenting">
+                                                    <p>
+                                                        Stack Overflow for Teams
+                                                        -
+                                                        <span
+                                                            >Collaborate and
+                                                            share knowledge with
+                                                            a private
+                                                            group.</span
+                                                        >
+                                                    </p>
+                                                    <img
+                                                        src="https://cdn.sstatic.net/Img/teams/teams-illo-free-sidebar-promo.svg?v=47faa659a05e"
+                                                        alt=""
+                                                    />
+                                                    <p class="blue-btn">
+                                                        Create a free Team
+                                                    </p>
+                                                    <p class="w-teams">
+                                                        What is Teams ?
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="logo" href="#">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="622"
+                            height="124"
+                            viewBox="0 0 622 124"
+                        >
+                            <g fill="none" fill-rule="evenodd">
+                                <path
+                                    fill="#1E1B1D"
+                                    fill-rule="nonzero"
+                                    d="M142.7,76.742 L135.526,76.107 C129.895,75.654 127.716,73.383 127.716,69.568 C127.716,65.028 131.167,62.211 137.706,62.211 C142.338,62.211 146.424,63.302 149.606,65.754 L153.875,61.485 C149.875,58.216 144.156,56.673 137.8,56.673 C128.264,56.673 121.361,61.573 121.361,69.75 C121.361,77.106 125.994,81.011 134.712,81.738 L142.068,82.373 C147.244,82.828 149.515,85.007 149.515,88.912 C149.515,94.18 144.974,96.812 137.615,96.812 C132.074,96.812 127.261,95.359 123.715,91.635 L119.355,95.995 C124.26,100.717 130.163,102.443 137.701,102.443 C148.508,102.443 155.865,97.443 155.865,88.821 C155.865,80.463 150.506,77.468 142.695,76.74 L142.7,76.742 Z M198.613,56.671 C191.444,56.671 186.928,58.084 182.971,63.094 C182.917,63.163 187.261,67.386 187.261,67.386 C189.894,63.663 192.8,62.302 198.521,62.302 C206.695,62.302 209.965,65.571 209.965,72.109 L209.965,76.377 L196.527,76.377 C186.537,76.377 181.089,81.464 181.089,89.277 C180.984058,92.6262953 182.189462,95.884474 184.449,98.359 C187.265,101.266 190.897,102.446 197.072,102.446 C203.066,102.446 206.336,101.266 209.972,97.632 L209.972,101.9 L216.511,101.9 L216.511,71.565 C216.511,61.848 210.611,56.673 198.62,56.673 L198.613,56.671 Z M209.969,86.1 C209.969,89.825 209.242,92.368 207.698,93.82 C204.883,96.545 201.523,96.82 197.709,96.82 C190.625,96.82 187.445,94.367 187.445,89.19 C187.445,84.013 190.715,81.29 197.437,81.29 L209.969,81.29 L209.969,86.1 Z M242.118,62.489 C246.386,62.489 249.018,63.76 252.38,67.483 C252.38,67.483 256.758,63.228 256.722,63.19 C252.137,58.285 248.245,56.677 242.122,56.677 C230.86,56.677 222.322,64.305 222.322,79.562 C222.322,94.819 230.858,102.449 242.122,102.449 C248.297,102.449 252.202,100.813 256.834,95.819 L252.384,91.55 C249.024,95.274 246.39,96.636 242.122,96.636 C238.033212,96.7993765 234.138626,94.8861276 231.769,91.55 C229.68,88.644 228.863,85.193 228.863,79.562 C228.863,73.931 229.68,70.48 231.769,67.574 C234.138117,64.2373869 238.033165,62.3242873 242.122,62.489 L242.118,62.489 Z M298.122,57.155 L289.97,57.155 L269.71,76.875 L269.741,37.236 L263.2,37.236 L263.2,101.9 L269.74,101.9 L269.709,85.591 L277.64,77.632 L292.628,101.9 L300.71,101.9 L282.17,73.1 L298.122,57.155 Z M328.335,56.055 C321.635,56.055 317.108,58.666 314.322,61.625 C310.231,65.89 309.187,71.025 309.187,79.207 C309.187,87.475 310.231,92.607 314.322,96.876 C317.108,99.835 321.633,102.447 328.335,102.447 C335.037,102.447 339.651,99.835 342.435,96.876 C346.526,92.611 347.571,87.476 347.571,79.207 C347.571,71.026 346.526,65.89 342.435,61.625 C339.651,58.666 335.035,56.055 328.335,56.055 Z M333.645,90.261 C332.226419,91.6312106 330.305034,92.3548961 328.335,92.261 C326.391065,92.355011 324.496795,91.6295149 323.113,90.261 C320.762,87.911 320.502,83.908 320.502,79.207 C320.502,74.506 320.762,70.591 323.113,68.241 C324.49659,66.8721679 326.391005,66.1466163 328.335,66.241 C330.30511,66.1466229 332.226679,66.8703779 333.645,68.241 C335.994,70.591 336.256,74.507 336.256,79.207 C336.256,83.907 335.994,87.907 333.645,90.261 Z M377.7,56.575 L368.562,84.6 L359.336,56.573 L347.41,56.573 L364.123,101.92 L373,101.92 L389.623,56.573 L377.7,56.575 Z M408.873,56.053 C397.124,56.053 389.116,64.408 389.116,79.205 C389.116,97.571 399.387,102.445 410.092,102.445 C418.274,102.445 422.714,99.92 427.326,95.306 L420.451,88.606 C417.578,91.479 415.14,92.871 410.179,92.871 C403.825,92.871 400.257,88.606 400.257,82.771 L428.631,82.771 L428.631,77.726 C428.631,65.279 421.494,56.053 408.873,56.053 Z M400.257,75.027 C400.273614,73.3485451 400.629053,71.6907352 401.302,70.153 C402.728026,67.2748247 405.662422,65.4538855 408.8745,65.4538855 C412.086578,65.4538855 415.020974,67.2748247 416.447,70.153 C417.117747,71.6914042 417.472764,73.3488292 417.491,75.027 L400.257,75.027 Z M445.322,60.927 L445.322,56.575 L434.267,56.575 L434.267,101.922 L445.582,101.922 L445.582,74.593 C445.582,68.848 449.412,66.236 452.894,66.236 C455.1886,66.1567159 457.391459,67.1404382 458.864,68.902 L467.43,60.318 C464.296,57.184 461.163,56.053 456.724,56.053 C452.407599,56.0018792 448.269295,57.7711856 445.324,60.927 L445.322,60.927 Z M470.941,51.848 L470.941,101.876 L482.255,101.876 L482.255,66.122 L490.611,66.122 L490.611,57.506 L482.255,57.506 L482.255,52.545 C482.255,49.934 483.562,48.454 486.255,48.454 L490.607,48.454 L490.607,38.881 L484.167,38.881 C474.939,38.881 470.937,45.408 470.937,51.848 L470.941,51.848 Z M537.191,56.048 C530.491,56.048 525.963,58.659 523.178,61.618 C519.088,65.883 518.043,71.018 518.043,79.2 C518.043,87.468 519.088,92.6 523.178,96.869 C525.963,99.828 530.489,102.44 537.191,102.44 C543.893,102.44 548.507,99.828 551.291,96.869 C555.381,92.604 556.426,87.469 556.426,79.2 C556.426,71.019 555.381,65.883 551.291,61.618 C548.506,58.659 543.891,56.048 537.191,56.048 Z M542.501,90.254 C541.082419,91.6242106 539.161034,92.3478961 537.191,92.254 C535.247065,92.348011 533.352795,91.6225149 531.969,90.254 C529.619,87.904 529.358,83.901 529.358,79.2 C529.358,74.499 529.619,70.584 531.969,68.234 C533.35259,66.8651679 535.247005,66.1396163 537.191,66.234 C539.16111,66.1396229 541.082679,66.8633779 542.501,68.234 C544.85,70.584 545.112,74.5 545.112,79.2 C545.112,83.9 544.85,87.9 542.501,90.254 Z M609.883,56.57 L602.573,84.6 L593.26,56.575 L584.993,56.575 L575.765,84.6 L568.455,56.573 L556.444,56.573 L570.37,101.92 L579.683,101.92 L589.17,73.46 L598.657,101.92 L607.97,101.92 L621.809,56.573 L609.883,56.57 Z M507.3,88.257 L507.3,38.881 L495.989,38.881 L495.989,88.953 C495.989,95.394 499.907,101.922 509.219,101.922 L515.659,101.922 L515.659,92.347 L511.308,92.347 C508.436,92.347 507.308,90.955 507.308,88.257 L507.3,88.257 Z M174,64.246 L180.046,58.2 L167.666,58.2 L167.666,43.5 L161.127,43.5 L161.127,89.912 C161.127,96.541 164.941,101.9 172.57,101.9 L177.2,101.9 L177.2,96.269 L173.75,96.269 C169.573,96.269 167.666,93.816 167.666,89.73 L167.666,64.246 L174,64.246 Z"
+                                />
+                                <polygon
+                                    fill="#BBBBBB"
+                                    points="88 80 99 80 99 124 0 124 0 80 11 80 11 113 88 113"
+                                />
+                                <path
+                                    fill="#F58025"
+                                    fill-rule="nonzero"
+                                    d="M22.9878906,76.73 L77.0128906,88.085 L79.2838906,77.285 L25.2588906,65.925 L22.9878906,76.73 Z M30.1368906,50.861 L80.1828906,74.169 L84.8448906,64.16 L34.7978906,40.852 L30.1368906,50.861 Z M43.9848906,26.308 L86.4128906,61.639 L93.4788906,53.154 L51.0508906,17.824 L43.9848906,26.308 Z M71.3718906,0.192 L62.5118906,6.782 L95.4598906,51.082 L104.319891,44.493 L71.3718906,0.192 Z M22,102 L77,102 L77,91 L22,91 L22,102 Z"
+                                />
+                            </g>
+                        </svg>
+                    </a>
+                    <ul class="links">
+                        <li><a href="#">About</a></li>
+                        <li class="sub-menu">
+                            <input type="checkbox" id="product-sub-menu-chk" />
+                            <label for="product-sub-menu-chk">Products</label>
+                            <div class="hidden-block">
+                                <div class="arrow"></div>
+                                <div class="products">
+                                    <div class="item">
+                                        <p class="title">Stack Overflow</p>
+                                        <p class="description">
+                                            Public questions & answers
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <p class="title">
+                                            Stack Overflow for Teams
+                                        </p>
+                                        <p class="description">
+                                            Where developers & technologists
+                                            share private knowledge with
+                                            coworkers
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <p class="title">Jobs</p>
+                                        <p class="description">
+                                            Programming & related technical
+                                            carrer opportunites
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <p class="title">Talent</p>
+                                        <p class="description">
+                                            Recruit tech talent & build your
+                                            employer brand
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <p class="title">Advertising</p>
+                                        <p class="description">
+                                            reach developers & technologists
+                                            worldwide
+                                        </p>
+                                    </div>
+                                    <p class="about">About the company</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a href="#">For Teams</a></li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <div class="search-bar">
+                        <a class="responsive-icon" href="#"
+                            ><i
+                                class="fas fa-search"
+                                onclick="document.querySelector('#search-input').classList.toggle('hidden')"
+                            ></i
+                        ></a>
+                        <div class="search-form hidden" id="search-input">
+                            <i class="main-icon fas fa-search"></i>
+                            <input
+                                type="text"
+                                placeholder="Search..."
+                                class="search-input"
+                            />
+                            <div class="hidden-block">
+                                <div class="arrow"></div>
+                                <div class="search-bar-list">
+                                    <ul>
+                                        <li>
+                                            <span>[tag] </span
+                                            ><span>search within a tag</span>
+                                        </li>
+                                        <li>
+                                            <span>answers:0</span
+                                            ><span>unanswered questions</span>
+                                        </li>
+                                        <li>
+                                            <span>user:1234</span
+                                            ><span>search by author</span>
+                                        </li>
+                                        <li>
+                                            <span>score:3</span
+                                            ><span>posts with a 3+ score</span>
+                                        </li>
+                                        <li>
+                                            <span>"words here"</span
+                                            ><span>exact phrase</span>
+                                        </li>
+                                        <li>
+                                            <span>is:question</span
+                                            ><span>type of post</span>
+                                        </li>
+                                        <li>
+                                            <span>collective:"Name"</span
+                                            ><span>collective content</span>
+                                        </li>
+                                        <li>
+                                            <span>isaccepted:yes</span
+                                            ><span>search within status</span>
+                                        </li>
+                                    </ul>
+                                    <div>
+                                        <p class="button">Ask a question</p>
+                                        <span><a href="#">Search help</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="buttons">
+                        <li><a href="#">Log in</a></li>
+                        <li><a href="#">Sign up</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="global-wrapper">
+            <aside>
+                <div class="lateral-menu">
+                    <p>Home</p>
+                    <ul class="iconic-links-list">
+                        <li>
+                            <p><span>PUBLIC</span><i></i></p>
+                            <ul>
+                                <li class="menu-active-page">
+                                    <i class="fas fa-globe-africa"></i
+                                    ><span>Questions</span>
+                                </li>
+                                <li><i></i><span>Tags</span></li>
+                                <li><i></i><span>Users</span></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>
+                                <span>COLLECTIVES</span
+                                ><i class="fas fa-info-circle"></i>
+                            </p>
+                            <ul>
+                                <li>
+                                    <i class="fas fa-sun"></i
+                                    ><span>Expore Collectives</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p><span>FIND A JOB</span><span></span></p>
+                            <ul>
+                                <li><i></i><span>Jobs</span></li>
+                                <li><i></i><span>Companies</span></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p><span>TEAMS</span><span></span></p>
+                            <ul>
+                                <li class="teams">
+                                    <div class="teams-presenting">
+                                        <p>
+                                            Stack Overflow for Teams -
+                                            <span
+                                                >Collaborate and share knowledge
+                                                with a private group.</span
+                                            >
+                                        </p>
+                                        <img
+                                            src="https://cdn.sstatic.net/Img/teams/teams-illo-free-sidebar-promo.svg?v=47faa659a05e"
+                                            alt=""
+                                        />
+                                        <p class="blue-btn">
+                                            Create a free Team
+                                        </p>
+                                        <p class="w-teams">What is Teams ?</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <main>
+                <header>
+                    <div class="left">
+                        <h1>
+                            Is there any way in elasticsearch to redirect
+                            specific search results to Context Suggester?
+                        </h1>
+                        <div>
+                            <div>
+                                <p class="key">Asked</p>
+                                <p class="value">today</p>
+                            </div>
+                            <div>
+                                <p class="key">Active</p>
+                                <p class="value">today</p>
+                            </div>
+                            <div>
+                                <p class="key">Viewed</p>
+                                <p class="value">9 times</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <button class="blue-btn">Ask Question</button>
+                    </div>
+                </header>
+                <div class="main-container">
+                    <section>
+                        <div class="question-callback">
+                            <div class="question-options">
+                                <div class="caret-options">
+                                    <div class="pop-up-container">
+                                        <i class="fas fa-caret-up"></i>
+                                        <div class="indication-pop-up">
+                                            <p>
+                                                This question shows research effort;
+                                                it is useful and clear
+                                            </p>
+                                            <div class="arrow"></div>
+                                        </div>
+                                    </div>
+                                    <span>1</span>
+                                    <div class="pop-up-container">
+                                        <i class="fas fa-caret-down"></i>
+                                        <div class="indication-pop-up">
+                                            <p>
+                                                This question does not show any
+                                                research effort; it is unclear or
+                                                not useful
+                                            </p>
+                                            <div class="arrow"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pop-up-container">
+                                    <svg
+                                        aria-hidden="true"
+                                        class="svg-icon iconBookmark"
+                                        width="18"
+                                        height="18"
+                                        viewBox="0 0 18 18"
+                                    >
+                                        <path
+                                            d="M6 1a2 2 0 00-2 2v14l5-4 5 4V3a2 2 0 00-2-2H6zm3.9 3.83h2.9l-2.35 1.7.9 2.77L9 7.59l-2.35 1.7.9-2.76-2.35-1.7h2.9L9 2.06l.9 2.77z"
+                                        ></path>
+                                    </svg>
+                                </div>
+                                <div class="pop-up-container">
+                                    <svg
+                                        aria-hidden="true"
+                                        class="mln2 mr0 svg-icon iconHistory"
+                                        width="19"
+                                        height="18"
+                                        viewBox="0 0 19 18"
+                                    >
+                                        <path
+                                            d="M3 9a8 8 0 113.73 6.77L8.2 14.3A6 6 0 105 9l3.01-.01-4 4-4-4h3L3 9zm7-4h1.01L11 9.36l3.22 2.1-.6.93L10 10V5z"
+                                        ></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="question">
+                                <p>
+                                    I'm aware what says elasticsearch documentation
+                                    about <i><b>Context Suggesters</b></i> and how
+                                    mutilple context categories are resolved in
+                                    suggestions.
+                                </p>
+                                <p class="message-callback">
+                                    If multiple categories or category contexts are
+                                    set on the query they are merged as a
+                                    disjunction. This means that suggestions match
+                                    if they contain at least one of the provided
+                                    context values.
+                                </p>
+                                <p>
+                                    I'm looking rather for something to resemble
+                                    conjunction between context categories. I know
+                                    for know it's rather impossible to change this
+                                    behaviour.
+                                </p>
+                                <p>My request looks like this</p>
+                                <div class="code">
+                                    <pre><code>
+    GET /biz_index/_search
+    {
+        "suggest": {
+            "suggest_biz": {
+                "text": "my text", 
+                "completion": {
+                    "field": "suggest_biz", 
+                    "contexts": { 
+                        "is_paid": [
+                            {"context": true}, 
+                            {"context": false, "boost": 2}
+                        ], 
+                        "is_hidden": True, 
+                        "location": {"lat": 40.6331, "lon": -89.3985}
+                    }, 
+                    "size": 10, 
+                    "fuzzy": {
+                        "fuzziness": 1, 
+                        "min_length": 3, 
+                        "prefix_length": 3
+                    }
+                }
+            }
+        }
+    }
+                                    </pre></code>
+                                </div>
+                                <p>
+                                    I'm wondering if its possible to reach something
+                                    like: <b>is_hidden</b> AND (<b>is_paid</b> OR
+                                    <b>location</b>).
+                                </p>
+                                <p>
+                                    Maybe through fetching all biz with flag
+                                    <b>is_hidden</b> and redirecting results to
+                                    <b>suggester</b>.
+                                </p>
+                                <p>Thank you for any help.</p>
+                                <div class="tags">
+                                    <p class="tag">
+                                        <img
+                                            src="https://i.stack.imgur.com/0qIml.png"
+                                            alt=""
+                                        />
+                                        <span>elasticsearch</span>
+                                    </p>
+                                    <p class="tag">django-rest-framework</p>
+                                </div>
+                                <div class="asker-infos">
+                                    <div class="options">
+                                        <div class="top">
+                                            <p class="option">Share</p>
+                                            <p class="option">Edit</p>
+                                            <p class="option">Follow</p>
+                                        </div>
+                                        <div class="bottom">
+                                            <p>Add a comment</p>
+                                        </div>
+                                    </div>
+                                    <div class="asker">
+                                        <p class="time-elapsed">
+                                            asked 21 hours ago
+                                        </p>
+                                        <div class="account">
+                                            <img
+                                                src="https://www.gravatar.com/avatar/581c1a008799fa8f1c9a7a69a3289e5f?s=64&d=identicon&r=PG"
+                                                alt=""
+                                            />
+                                            <p class="pseudo">pawelztef</p>
+
+                                            <p class="activity-details">
+                                                <span class="ratio"><b>11</b></span>
+                                                <span class="num marron"
+                                                    ><i class="fas fa-circle"></i>
+                                                    19</span
+                                                >
+                                            </p>
+                                        </div>
+                                        <p class="contributor">
+                                            <svg
+                                                aria-hidden="true"
+                                                class="svg-icon iconWave"
+                                                width="18"
+                                                height="18"
+                                                viewBox="0 0 18 18"
+                                            >
+                                                <path
+                                                    d="M10.7 17c-2.3 0-3.9-2.05-5.07-3.54l-.49-.6c-.67-.8-1.59-1.63-2.4-2.36A10.91 10.91 0 011.1 8.87a.79.79 0 01-.09-.56c.04-.19.14-.34.27-.4.14-.07.29-.1.45-.1.35 0 .67.18.87.34l3.5 2.75c.04.03.1.03.13 0a.09.09 0 00.02-.13l-.02-.02c-.57-.8-3.42-4.77-3.71-5.15-.21-.27-.3-.58-.24-.84.05-.2.2-.37.4-.48.18-.09.35-.13.52-.13.44 0 .76.28.96.51l3.6 4.42c.04.04.07.06.14.02.05-.02.06-.07.03-.12L4.41 2.96a.94.94 0 01-.1-.73.92.92 0 0 1 .47-.57 1.06 1.06 0 0 1 1.4.39l3.8 6.14c.03.04.07.07.14.04.04-.03.06-.07.04-.13A153.8 153.8 0 008.1 2.54c-.31-.68-.2-1.14.36-1.42.52-.27 1.14-.07 1.47.48l3.69 8.3c.02.04.05.05.1.06a.1.1 0 00.09-.07l.66-2.28c.1-.3.31-.56.62-.72.3-.15.65-.18.98-.1.7.2 1.09.87.89 1.52-.1.37-.46 1.73-.99 3.43l-.1.33c-.58 1.86-1.03 3.33-3.11 4.4-.7.35-1.38.53-2.05.53z"
+                                                    fill="#FFC166"
+                                                ></path>
+                                                <path
+                                                    d="M14 .37a.5.5 0 00-.88.45l1.96 3.9a.5.5 0 00.9-.45L14 .37zm-1.17 2.17a.5.5 0 00-.91.42l.84 1.87a.5.5 0 10.91-.41l-.84-1.88zm-10.6 9.74a.5.5 0 01.7-.02l1.7 1.6a.5.5 0 01-.7.72l-1.68-1.6a.5.5 0 01-.02-.7zm-1.39.98a.5.5 0 10-.68.73l3.03 2.84a.5.5 0 00.68-.73L.84 13.26z"
+                                                    opacity=".4"
+                                                ></path>
+                                            </svg>
+                                            <span>New contributor</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="answer-block">
+                            <p class="someone-other">
+                                Know someone who can answer? Share a link to this
+                                <a href="#">question</a> via <a href="#">email</a>,
+                                <a href="#">Twitter</a>, or
+                                <a href="#">Facebook</a>.
+                            </p>
+                            <section class="answer">
+                                <h3>Your Answer</h3>
+                                <div class="embed-form"></div>
+                                <div class="advices">
+                                    <p>
+                                        Thanks for contributing and answer to Stack
+                                        Overflow!
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            Please be sure to
+                                            <i>answer the question</i>. Provide
+                                            details and share your research!
+                                        </li>
+                                    </ul>
+                                    <p>But <i>avoid</i> ...</p>
+                                    <ul>
+                                        <li>
+                                            Asking for help, clarification, or
+                                            responding to other answers.
+                                        </li>
+                                        <li>
+                                            Making statements based on opinion; back
+                                            them up with references or personal
+                                            experience.
+                                        </li>
+                                    </ul>
+                                    <p>
+                                        To learn more, see our
+                                        <a href="#">tips on writing great answers</a
+                                        >.
+                                    </p>
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <div class="community-wiki">
+                                    <label for="no-answers" class="checkbox">
+                                        <input type="checkbox" id="no-answers" />
+                                        <span class="checkmark"></span>
+                                        Community wiki
+                                    </label>
+                                </div>
+                                <button class="blue-btn">Post Your Answer</button>
+                                <p class="paragraph-tags">
+                                    Browse other questions tagged
+                                    <span class="tag">
+                                        <img
+                                            src="https://i.stack.imgur.com/0qIml.png"
+                                            alt=""
+                                        />
+                                        <span>elasticsearch</span>
+                                    </span>
+                                    <span class="tag">django-rest-framework</span>
+                                    or <a href="#">ask your own question</a>.
+                                </p>
+                            </section>
+                        </div>
+                    </section>
+                    <div class="lateral-pane">
+                        <div class="lateral-notes-container">
+                            <aside class="lateral-note">
+                                <div class="head">
+                                    <h4>The Overflow Blog</h4>
+                                </div>
+                                <div class="content">
+                                    <div class="icon-line">
+                                        <i class="fas fa-pen"></i>
+                                        <p>
+                                            This AI-assisted bug bash is offering
+                                            serious prizes for squashing nasty code
+                                        </p>
+                                    </div>
+                                    <div class="icon-line">
+                                        <i class="fas fa-pen"></i>
+                                        <p>
+                                            Podcast 376: Writing the roadmap from
+                                            engineer to manager
+                                        </p>
+                                    </div>
+                                </div>
+                            </aside>
+                            <aside class="lateral-note">
+                                <div class="head">
+                                    <h4>Featured on Meta</h4>
+                                </div>
+                                <div class="content">
+                                    <div class="icon-line">
+                                        <i class="far fa-comment-alt"></i>
+                                        <p>
+                                            Please welcom Valued Associates: #958 -
+                                            V2Blast & #959 - SpencerG
+                                        </p>
+                                    </div>
+                                    <div class="icon-line">
+                                        <i class="far fa-comment-alt"></i>
+                                        <p>
+                                            Unpinning the accepted answer from the
+                                            top of the list of answers
+                                        </p>
+                                    </div>
+                                    <div class="icon-line">
+                                        <i class="fas fa-pen"></i>
+                                        <p>
+                                            Outdated Answers: accepted answer is now
+                                            unpinned on Stack Overflow
+                                        </p>
+                                    </div>
+                                    <div class="icon-line">
+                                        <i class="fas fa-pen"></i>
+                                        <p>
+                                            Congrats to Bhargav Rao on 500k handled
+                                            flags!
+                                        </p>
+                                    </div>
+                                </div>
+                            </aside>
+                            <aside class="lateral-note">
+                                <div class="head">
+                                    <h4>Hot Meta Posts</h4>
+                                </div>
+                                <div class="content">
+                                    <div class="icon-line">
+                                        <span>3</span>
+                                        <p>Dis-[connect-four] betteer tagging</p>
+                                    </div>
+                                    <div class="icon-line">
+                                        <span>15</span>
+                                        <p>
+                                            Merge [case-statement] and [case] tags
+                                        </p>
+                                    </div>
+                                    <div class="icon-line">
+                                        <span>37</span>
+                                        <p>Request to burn the [ps1] tag</p>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+                        <aside class="lateral-note job">
+                            <div class="head">
+                                <h3>Want a <b>javascript</b> job?</h3>
+                                <svg
+                                    id="Layer_1"
+                                    data-name="Layer 1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 32 32"
+                                >
+                                    <title>Job Ad Illustrations</title>
+                                    <path
+                                        d="M26.18,9.05,17,3.74a1.82,1.82,0,0,0-1.78,0L6,9.05a1.77,1.77,0,0,0-.89,1.53V21.21A1.76,1.76,0,0,0,6,22.74l3.44,2a.5.5,0,0,0,.51-.87l-3.45-2a.78.78,0,0,1-.38-.67V10.58a.75.75,0,0,1,.38-.66L15.69,4.6a.79.79,0,0,1,.76,0l9.23,5.32a.77.77,0,0,1,.38.66V21.21a.78.78,0,0,1-.38.67l-9.23,5.31a.74.74,0,0,1-.76,0l-3.2-1.84A4.09,4.09,0,0,0,13.12,23V12.42a.5.5,0,0,0-1,0V23a3,3,0,0,1-.53,1.92,1.88,1.88,0,0,1-.2.19l-.59.45,4.38,2.53a1.84,1.84,0,0,0,.89.23,1.87,1.87,0,0,0,.89-.23l9.22-5.32a1.76,1.76,0,0,0,.89-1.53V10.58A1.77,1.77,0,0,0,26.18,9.05Z"
+                                    ></path>
+                                    <path
+                                        d="M20,20.42a2.46,2.46,0,0,1-.87.27,4.68,4.68,0,0,1-1,.06,4.46,4.46,0,0,1-1-.14,2.59,2.59,0,0,1-.79-.36,1.88,1.88,0,0,1-.53-.59,1.93,1.93,0,0,1-.25-.87.51.51,0,0,0-.54-.45.49.49,0,0,0-.46.53,2.82,2.82,0,0,0,1.21,2.2,3.57,3.57,0,0,0,1.1.5,4.78,4.78,0,0,0,1.21.18h.2a6.43,6.43,0,0,0,1-.08,3.62,3.62,0,0,0,1.18-.37,2.73,2.73,0,0,0,.94-.78,2.23,2.23,0,0,0,.44-1.3A2.59,2.59,0,0,0,21.62,18a2.26,2.26,0,0,0-.67-.83,3.13,3.13,0,0,0-.88-.49,6.7,6.7,0,0,0-.9-.29l-.6-.19L17.7,16a7.13,7.13,0,0,1-.82-.26,2.27,2.27,0,0,1-.63-.35,1.23,1.23,0,0,1-.37-.47,1.55,1.55,0,0,1-.12-.72,1.18,1.18,0,0,1,.23-.73,1.83,1.83,0,0,1,.6-.5,3,3,0,0,1,.87-.27,5.54,5.54,0,0,1,1-.06,4.55,4.55,0,0,1,1,.14,2.34,2.34,0,0,1,.78.37,1.77,1.77,0,0,1,.54.58,2.07,2.07,0,0,1,.25.87.5.5,0,0,0,1-.08,2.92,2.92,0,0,0-.39-1.29,2.79,2.79,0,0,0-.83-.91,3.62,3.62,0,0,0-1.09-.5,6,6,0,0,0-1.22-.18,6.57,6.57,0,0,0-1.15.07,3.71,3.71,0,0,0-1.18.37,2.68,2.68,0,0,0-1,.78,2.22,2.22,0,0,0-.43,1.3,2.53,2.53,0,0,0,.22,1.2,2.3,2.3,0,0,0,.66.82,3.59,3.59,0,0,0,.88.5,9.15,9.15,0,0,0,.93.29l.85.21.59.19a7.29,7.29,0,0,1,.83.26,2.49,2.49,0,0,1,.62.35,1.36,1.36,0,0,1,.38.47,1.57,1.57,0,0,1,.12.73,1.21,1.21,0,0,1-.23.72A1.66,1.66,0,0,1,20,20.42Z"
+                                    ></path>
+                                    <path
+                                        d="M12.64,10.58a.5.5,0,0,0,.5-.5v-1a.5.5,0,0,0-.5-.5.51.51,0,0,0-.5.5v1A.5.5,0,0,0,12.64,10.58Z"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <div class="content">
+                                <div class="full-line">
+                                    <div class="img-container">
+                                        <img
+                                            src="https://i.stack.imgur.com/nxoUf.png?s=64"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <div class="right">
+                                        <div class="job">
+                                            <p class="job-name">
+                                                (Senior) Frontend Engineer at
+                                                mobolity start-up (m/f/x) - Munich
+                                                or Remote
+                                            </p>
+                                            <div class="enterprise">
+                                                <p class="name">FINN</p>
+                                                <p class="location">
+                                                    <i
+                                                        class="
+                                                            fas
+                                                            fa-map-marker-alt
+                                                        "
+                                                    ></i>
+                                                    München, Deutschland
+                                                </p>
+                                            </div>
+                                            <div class="infos">
+                                                <p class="salary">€60K - €80K</p>
+                                                <p class="type">
+                                                    <i class="fas fa-wifi"></i
+                                                    >REMOTE
+                                                </p>
+                                                <p class="rest">
+                                                    <i class="fas fa-truck"></i
+                                                    >RELOCATION
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="tags">
+                                            <p class="active">javascript</p>
+                                            <p>reactjs</p>
+                                        </div>
+                                    </div>
+                                    <div class="close-btn">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                </div>
+                                <div class="full-line">
+                                    <div class="img-container">
+                                        <img
+                                            src="https://i.stack.imgur.com/nxoUf.png?s=64"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <div class="right">
+                                        <div class="job">
+                                            <p class="job-name">
+                                                (Senior) Frontend Engineer at
+                                                mobolity start-up (m/f/x) - Munich
+                                                or Remote
+                                            </p>
+                                            <div class="enterprise">
+                                                <p class="name">FINN</p>
+                                                <p class="location">
+                                                    <i
+                                                        class="
+                                                            fas
+                                                            fa-map-marker-alt
+                                                        "
+                                                    ></i>
+                                                    München, Deutschland
+                                                </p>
+                                            </div>
+                                            <div class="infos">
+                                                <p class="salary">€60K - €80K</p>
+                                                <p class="type">
+                                                    <i class="fas fa-wifi"></i
+                                                    >REMOTE
+                                                </p>
+                                                <p class="rest">
+                                                    <i class="fas fa-truck"></i
+                                                    >RELOCATION
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="tags">
+                                            <p class="active">javascript</p>
+                                            <p>reactjs</p>
+                                        </div>
+                                    </div>
+                                    <div class="close-btn">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                </div>
+                                <div class="full-line">
+                                    <div class="img-container">
+                                        <img
+                                            src="https://i.stack.imgur.com/nxoUf.png?s=64"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <div class="right">
+                                        <div class="job">
+                                            <p class="job-name">
+                                                (Senior) Frontend Engineer at
+                                                mobolity start-up (m/f/x) - Munich
+                                                or Remote
+                                            </p>
+                                            <div class="enterprise">
+                                                <p class="name">FINN</p>
+                                                <p class="location">
+                                                    <i
+                                                        class="
+                                                            fas
+                                                            fa-map-marker-alt
+                                                        "
+                                                    ></i>
+                                                    München, Deutschland
+                                                </p>
+                                            </div>
+                                            <div class="infos">
+                                                <p class="salary">€60K - €80K</p>
+                                                <p class="type">
+                                                    <i class="fas fa-wifi"></i
+                                                    >REMOTE
+                                                </p>
+                                                <p class="rest">
+                                                    <i class="fas fa-truck"></i
+                                                    >RELOCATION
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="tags">
+                                            <p class="active">javascript</p>
+                                            <p>reactjs</p>
+                                        </div>
+                                    </div>
+                                    <div class="close-btn">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                </div>
+                                <div class="full-line">
+                                    <div class="img-container">
+                                        <img
+                                            src="https://i.stack.imgur.com/nxoUf.png?s=64"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <div class="right">
+                                        <div class="job">
+                                            <p class="job-name">
+                                                (Senior) Frontend Engineer at
+                                                mobolity start-up (m/f/x) - Munich
+                                                or Remote
+                                            </p>
+                                            <div class="enterprise">
+                                                <p class="name">FINN</p>
+                                                <p class="location">
+                                                    <i
+                                                        class="
+                                                            fas
+                                                            fa-map-marker-alt
+                                                        "
+                                                    ></i>
+                                                    München, Deutschland
+                                                </p>
+                                            </div>
+                                            <div class="infos">
+                                                <p class="salary">€60K - €80K</p>
+                                                <p class="type">
+                                                    <i class="fas fa-wifi"></i
+                                                    >REMOTE
+                                                </p>
+                                                <p class="rest">
+                                                    <i class="fas fa-truck"></i
+                                                    >RELOCATION
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="tags">
+                                            <p class="active">javascript</p>
+                                            <p>reactjs</p>
+                                        </div>
+                                    </div>
+                                    <div class="close-btn">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                </div>
+                                <div class="full-line">
+                                    <div class="img-container">
+                                        <img
+                                            src="https://i.stack.imgur.com/nxoUf.png?s=64"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <div class="right">
+                                        <div class="job">
+                                            <p class="job-name">
+                                                (Senior) Frontend Engineer at
+                                                mobolity start-up (m/f/x) - Munich
+                                                or Remote
+                                            </p>
+                                            <div class="enterprise">
+                                                <p class="name">FINN</p>
+                                                <p class="location">
+                                                    <i
+                                                        class="
+                                                            fas
+                                                            fa-map-marker-alt
+                                                        "
+                                                    ></i>
+                                                    München, Deutschland
+                                                </p>
+                                            </div>
+                                            <div class="infos">
+                                                <p class="salary">€60K - €80K</p>
+                                                <p class="type">
+                                                    <i class="fas fa-wifi"></i
+                                                    >REMOTE
+                                                </p>
+                                                <p class="rest">
+                                                    <i class="fas fa-truck"></i
+                                                    >RELOCATION
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="tags">
+                                            <p class="active">javascript</p>
+                                            <p>reactjs</p>
+                                        </div>
+                                    </div>
+                                    <div class="close-btn">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <div class="more">
+                                        <svg
+                                            aria-hidden="true"
+                                            class="svg-icon iconLogoGlyphSm"
+                                            width="19"
+                                            height="22"
+                                            viewBox="0 0 19 22"
+                                        >
+                                            <path
+                                                d="M16 20v-6h2v8H0v-8h2v6h14z"
+                                                fill="#C1BEBC"
+                                            ></path>
+                                            <path
+                                                d="m12.72 0-1.57 1.17L17 9.05l1.57-1.18L12.72 0zM4 18h10v-2H4v2zm11.4-7.08L7.86 4.64l1.25-1.5 7.54 6.28-1.25 1.5zm-10-1.91 8.9 4.14.82-1.78-8.9-4.14L5.4 9zm8.63 6.27-9.9-1.67.4-1.92 9.63 1.92-.13 1.67z"
+                                                fill="#F48024"
+                                            ></path>
+                                        </svg>
+                                        <p>
+                                            View more jobs on
+                                            <b>Stack Overflow</b>
+                                        </p>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </aside>
+                        <aside class="related-tags related">
+                            <h3>Related</h3>
+                            <div class="related-container">
+                                <div>
+                                    <span class="emphased">55</span>
+                                    <p>
+                                        Is there any way in Elasticsearch to get
+                                        results as CSV file in curl API?
+                                    </p>
+                                </div>
+                                <div>
+                                    <span>9</span>
+                                    <p>
+                                        ElasticSearch phrase preix search - How do I
+                                        get the matched phrase?
+                                    </p>
+                                </div>
+                                <div>
+                                    <span class="emphased">0</span>
+                                    <p>
+                                        Elasticsearch term suggester return stemmed
+                                        results
+                                    </p>
+                                </div>
+                                <div>
+                                    <span class="emphased">55</span>
+                                    <p>
+                                        Is there any way in Elasticsearch to get
+                                        results as CSV file in curl API?
+                                    </p>
+                                </div>
+                                <div>
+                                    <span>9</span>
+                                    <p>
+                                        ElasticSearch phrase preix search - How do I
+                                        get the matched phrase?
+                                    </p>
+                                </div>
+                                <div>
+                                    <span class="emphased">0</span>
+                                    <p>
+                                        Elasticsearch term suggester return stemmed
+                                        results
+                                    </p>
+                                </div>
+                            </div>
+                        </aside>
+                        <aside class="hot-questions">
+                            <h3>Hot Network Questions</h3>
+                            <div class="icon-line">
+                                <i class="fas fa-question"></i>
+                                <p>
+                                    Sell stocks or borrow money from a friend to pay
+                                    my credit card bill?
+                                </p>
+                            </div>
+
+                            <div class="icon-line">
+                                <i class="fas fa-question"></i>
+                                <p>
+                                    What's the earliest work of science fiction to
+                                    start out of order?
+                                </p>
+                            </div>
+
+                            <div class="icon-line">
+                                <i class="fas fa-question"></i>
+                                <p>
+                                    If a creature with a fly Speed of 30 fr. has the
+                                    Fly spell cast upon it, does it now ahve a 90
+                                    ft. fly speed, or only 60 ft. total ?
+                                </p>
+                            </div>
+
+                            <div class="icon-line">
+                                <i class="fas fa-question"></i>
+                                <p>Help me hear Am7 as a minor chord</p>
+                            </div>
+
+                            <div class="icon-line">
+                                <i class="fas fa-question"></i>
+                                <p>Is there still a hole in the ozone layer?</p>
+                            </div>
+
+                            <div class="icon-line">
+                                <i class="fas fa-question"></i>
+                                <p>iPhone 6s Plus does not offer iOS updates</p>
+                            </div>
+
+                            <div class="icon-line">
+                                <i class="fas fa-question"></i>
+                                <p>
+                                    There is stil a lot of whitespace after my first
+                                    table that wont allow me to place my second
+                                    table immediately after it?
+                                </p>
+                            </div>
+
+                            <div class="icon-line">
+                                <i class="fas fa-question"></i>
+                                <p>Does suffero have perfect forms?</p>
+                            </div>
+
+                            <div class="icon-line">
+                                <span></span>
+                                <p>more hot questions</p>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <footer>
+            <div>
+                <div class="left">
+                    <div class="logo">
+                        <a href="#">
+                            <svg
+                                aria-hidden="true"
+                                class="native svg-icon iconLogoGlyphMd"
+                                width="32"
+                                height="37"
+                                viewBox="0 0 32 37"
+                            >
+                                <path
+                                    d="M26 33v-9h4v13H0V24h4v9h22z"
+                                    fill="#BCBBBB"
+                                ></path>
+                                <path
+                                    d="m21.5 0-2.7 2 9.9 13.3 2.7-2L21.5 0zM26 18.4 13.3 7.8l2.1-2.5 12.7 10.6-2.1 2.5zM9.1 15.2l15 7 1.4-3-15-7-1.4 3zm14 10.79.68-2.95-16.1-3.35L7 23l16.1 2.99zM23 30H7v-3h16v3z"
+                                    fill="#F48024"
+                                ></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <div>
+                        <ul class="links-grid">
+                            <li>
+                                <a href="#">STACK OVERFLOW</a>
+                                <ul>
+                                    <li><a href="#">Questions</a></li>
+                                    <li><a href="#">Jobs</a></li>
+                                    <li>
+                                        <a href="#">Developer Jobs Directory</a>
+                                    </li>
+                                    <li><a href="#">Salary Calculator</a></li>
+                                    <li><a href="#">Help</a></li>
+                                    <li><a href="#">Mobile</a></li>
+                                    <li>
+                                        <a href="#">Disable Responsiveness</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">PRODUCTS</a>
+                                <ul>
+                                    <li><a href="#">Teams</a></li>
+                                    <li><a href="#">Talent</a></li>
+                                    <li><a href="#">Advertising</a></li>
+                                    <li><a href="#">Enterprise</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">COMPANY</a>
+                                <ul>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Press</a></li>
+                                    <li><a href="#">Work Here</a></li>
+                                    <li><a href="#">Legal</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Terms of Service</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                    <li><a href="#">Cookie Settings</a></li>
+                                    <li><a href="#">Cookie Policy</a></li>
+                                </ul>
+                            </li>
+                            <li class="stack-networks active">
+                                <div class="first-link-list">
+                                    <div class="back-button-container">
+                                        <div class="exchange-network-icon">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </div>
+                                        <a href="#">STACK EXCHANGE NETWORK</a>
+                                    </div>
+                                    <ul>
+                                        <li class="option focus">
+                                            Technology
+                                            <i class="fas fa-chevron-right"></i>
+                                        </li>
+                                        <li class="option">
+                                            Life / Arts
+                                            <i class="fas fa-chevron-right"></i>
+                                        </li>
+                                        <li class="option">
+                                            Culture / Recreation
+                                            <i class="fas fa-chevron-right"></i>
+                                        </li>
+                                        <li class="option">
+                                            Science
+                                            <i class="fas fa-chevron-right"></i>
+                                        </li>
+                                        <li class="option">
+                                            Other
+                                            <i class="fas fa-chevron-right"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="exchange-networks">
+                                    <div class="technology focus">
+                                        <ul>
+                                            <div>
+                                                <li>Stack Overflow</li>
+                                                <li>Server Fault</li>
+                                                <li>Super User</li>
+                                                <li>Web Applications</li>
+                                                <li>Ask Ubuntu</li>
+                                                <li>Webmasters</li>
+                                                <li>Game Development</li>
+                                            </div>
+                                            <div>
+                                                <li>TeX - LaTeX</li>
+                                                <li>Software Engineering</li>
+                                                <li>Unix & Linux</li>
+                                                <li>Ask Different (Apple)</li>
+                                                <li>WordPress Development</li>
+                                                <li>
+                                                    Geographic Information
+                                                    Systems
+                                                </li>
+                                                <li>Electrical Engineering</li>
+                                            </div>
+                                            <div>
+                                                <li>Android Enthusiasts</li>
+                                                <li>Information Security</li>
+                                                <li>Database Administrators</li>
+                                                <li>Drupal Answers</li>
+                                                <li>SharePoint</li>
+                                                <li>User Experience</li>
+                                                <li>Mathematica</li>
+                                            </div>
+                                            <div>
+                                                <li>Salesforce</li>
+                                                <li>
+                                                    ExpressionEngine Answers
+                                                </li>
+                                                <li>
+                                                    Stack Overflow em Português
+                                                </li>
+                                                <li>Blender</li>
+                                                <li>Network Engineering</li>
+                                                <li>Cryptography</li>
+                                                <li>Code Review</li>
+                                            </div>
+                                            <div>
+                                                <li>Magento</li>
+                                                <li>
+                                                    Software Recommendations
+                                                </li>
+                                                <li>Signal Processing</li>
+                                                <li>Emacs</li>
+                                                <li>Raspberry Pi</li>
+                                                <li>
+                                                    Stack Overflow ha pycckom
+                                                </li>
+                                                <li>Code Golf</li>
+                                            </div>
+                                            <div>
+                                                <li>
+                                                    Stack Overflow en espanol
+                                                </li>
+                                                <li>Ethereum</li>
+                                                <li>Data Science</li>
+                                                <li>Arduino</li>
+                                                <li>Bitcoin</li>
+                                                <li>
+                                                    Software Quality Assurance &
+                                                    Testing
+                                                </li>
+                                                <li>Sound Design</li>
+                                            </div>
+                                            <div>
+                                                <li>Windows Phone</li>
+                                                <li><b>more (29)</b></li>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                    <div class="life-arts">
+                                        <ul>
+                                            <div>
+                                                <li>Photography</li>
+                                                <li>
+                                                    Science Fiction & Fantasy
+                                                </li>
+                                                <li>Graphic Desing</li>
+                                                <li>Movies & TV</li>
+                                                <li>
+                                                    Music: Practice & Theory
+                                                </li>
+                                                <li>Worldbuilding</li>
+                                                <li>Video Production</li>
+                                            </div>
+                                            <div>
+                                                <li>
+                                                    Seasone Advice (cooking)
+                                                </li>
+                                                <li>Home Improvement</li>
+                                                <li>
+                                                    Personal Finance & Money
+                                                </li>
+                                                <li>Academia</li>
+                                                <li>Law</li>
+                                                <li>Physical Fitness</li>
+                                                <li>Gardening & Landscaping</li>
+                                            </div>
+                                            <div>
+                                                <li>Parenting</li>
+                                                <li><b>more (10)</b></li>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                    <div class="culture-recreation">
+                                        <ul>
+                                            <div>
+                                                <li>
+                                                    English Language & Usage
+                                                </li>
+                                                <li>Skeptics</li>
+                                                <li>Mi Yodeya (Judaism)</li>
+                                                <li>Travel</li>
+                                                <li>Christianity</li>
+                                                <li>
+                                                    Englich Languate Leearners
+                                                </li>
+                                                <li>Japanese Language</li>
+                                            </div>
+                                            <div>
+                                                <li>Chinese Language</li>
+                                                <li>French Language</li>
+                                                <li>German Language</li>
+                                                <li>Biblical Hermeneutics</li>
+                                                <li>History</li>
+                                                <li>Spanish Language</li>
+                                                <li>Islam</li>
+                                            </div>
+                                            <div>
+                                                <li>Русский язык</li>
+                                                <li>Russian Language</li>
+                                                <li>Arqade (gaming)</li>
+                                                <li>Bicycles</li>
+                                                <li>Role-playing Games</li>
+                                                <li>Anime & Manga</li>
+                                                <li>Puzzling</li>
+                                            </div>
+                                            <div>
+                                                <li>
+                                                    Motor Vehicle Maintenance &
+                                                    Repair
+                                                </li>
+                                                <li>Board & Card Games</li>
+                                                <li>Bricks</li>
+                                                <li>Homebrewing</li>
+                                                <li>Martial Arts</li>
+                                                <li>The Great Outdoors</li>
+                                                <li>Poker</li>
+                                            </div>
+                                            <div>
+                                                <li>Chess</li>
+                                                <li>Sports</li>
+                                                <li><b>more (16)</b></li>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                    <div class="science">
+                                        <ul>
+                                            <div>
+                                                <li>MathOverflow</li>
+                                                <li>Mathematics</li>
+                                                <li>Cross Validated (stats)</li>
+                                                <li>
+                                                    Theoretical Computer Science
+                                                </li>
+                                                <li>Physics</li>
+                                                <li>Chemistry</li>
+                                                <li>Biology</li>
+                                            </div>
+                                            <div>
+                                                <li>Computer Science</li>
+                                                <li>Philosophy</li>
+                                                <li>Linguistics</li>
+                                                <li>
+                                                    Psychology & Neuroscience
+                                                </li>
+                                                <li>Computational Science</li>
+                                                <li><b>more (10)</b></li>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                    <div class="other">
+                                        <ul>
+                                            <div>
+                                                <li>Meta Stack Exchange</li>
+                                                <li>Stack Apps</li>
+                                                <li>API</li>
+                                                <li>Data</li>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="contacts">
+                        <a href="#">Blog</a>
+                        <a href="#">Facebook</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">LinkedIn</a>
+                        <a href="#">Instagram</a>
+                    </div>
+                    <p class="copyright">
+                        site design / logo © 2021 Stack Exchange Inc; user
+                        contributions licensed under cc by-sa. rev
+                        2021.9.2.40142
+                    </p>
+                </div>
+            </div>
+        </footer>
+        <script src="../javascript/exchange-networks.js"></script>
+		<script>
+			document.querySelector(".fa-times").addEventListener("click", function(){
+				this.parentNode.remove();
+			})
+		</script>
+    </body>
+</html>
